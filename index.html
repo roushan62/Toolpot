@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tools for PDF, text, images, developers, and SEO. Boost your productivity with our easy-to-use web tools.">
+    <meta name="keywords" content="online tools, PDF tools, text tools, image tools, developer tools, SEO tools">
+    <title>ToolKit - Free Online Tools for Everyone</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --secondary-color: #6b7280;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #111827;
+            color: #e5e7eb;
+            --light-color: #1f2937;
+            --dark-color: #f9fafb;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+            --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        body.dark-mode header {
+            background-color: #1f2937;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        body.dark-mode .nav-links a {
+            color: #e5e7eb;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        body.dark-mode .mobile-menu-btn {
+            color: #e5e7eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--dark-color);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        body.dark-mode .category-card {
+            background-color: #1f2937;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .category-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .tools-list {
+            list-style: none;
+            padding: 1rem;
+        }
+
+        .tools-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tools-list a {
+            display: block;
+            padding: 0.7rem;
+            border-radius: 5px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        body.dark-mode .tools-list a {
+            color: #e5e7eb;
+        }
+
+        .tools-list a:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 3rem 0;
+            background-color: #f3f4f6;
+        }
+
+        body.dark-mode .features {
+            background-color: #111827;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        body.dark-mode .feature-card {
+            background-color: #1f2937;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        body.dark-mode footer {
+            background-color: #111827;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 1.5rem;
+            cursor: pointer;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+            padding: 1rem;
+            transform: translateY(-150%);
+            transition: transform 0.3s ease;
+        }
+
+        body.dark-mode .mobile-menu {
+            background-color: #1f2937;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu .nav-links {
+            flex-direction: column;
+        }
+
+        .mobile-menu .nav-links li {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDIgQzEwLjg5LDIgMTAsMi45IDEwLDQgQzEwLDUuMSAxMC45LDYgMTIsNiBDMTMuMSw2IDE0LDUuMSAxNCw0IEMxNCwyLjkgMTMuMSwyIDEyLDIgTTE1LjUsOCBDMTQuMTIsOCAxMyw5LjEyIDEzLDEwLjUgQzEzLDExLjg4IDE0LjEyLDEzIDE1LjUsMTMgQzE2Ljg4LDEzIDE4LDExLjg4IDE4LDEwLjUgQzE4LDkuMTIgMTYuODgsOCAxNS41LDggTTguNSw4IEM3LjEyLDggNiw5LjEyIDYsMTAuNSBDNiwxMS44OCA3LjEyLDEzIDguNSwxMyBDOS44OCwxMyAxMSwxMS44OCAxMSwxMC41IEMxMSw5LjEyIDkuODgsOCA4LjUsOCBNMTIsMTQgQzkuNjYsMTQgNCwxNS4xNyA0LDE3LjUgQzQsMTkuODggOS4zMywyMSAxMiwyMSBDMTQuNjcsMjEgMjAsMTkuODggMjAsMTcuNSBDMjAsMTUuMTcgMTQuMzQsMTQgMTIsMTQiIGZpbGw9IiM0ZjQ2ZTUiLz48L3N2Zz4=" alt="ToolKit Logo">
+                ToolKit
+            </a>
+            <nav class="desktop-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </nav>
+            <div class="theme-toggle" id="themeToggle">
+                <span class="toggle-icon">🌓</span>
+                <span>Dark Mode</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="disclaimer.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Your All-in-One Online ToolKit</h1>
+            <p>Free, fast, and easy-to-use tools for PDFs, text, images, development, and SEO. No installation required.</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search for tools...">
+                <button>Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Browse Tools by Category</h2>
+            <div class="categories-grid">
+                <!-- PDF Tools -->
+                <div class="category-card">
+                    <div class="category-header">PDF Tools</div>
+                    <ul class="tools-list">
+                        <li><a href="pdf-to-word.html">PDF to Word Converter</a></li>
+                        <li><a href="merge-pdf.html">Merge PDF Files</a></li>
+                        <li><a href="split-pdf.html">Split PDF</a></li>
+                        <li><a href="compress-pdf.html">Compress PDF</a></li>
+                        <li><a href="pdf-to-jpg.html">PDF to JPG Converter</a></li>
+                        <li><a href="word-to-pdf.html">Word to PDF Converter</a></li>
+                    </ul>
+                </div>
+
+                <!-- Text Tools -->
+                <div class="category-card">
+                    <div class="category-header">Text Tools</div>
+                    <ul class="tools-list">
+                        <li><a href="word-counter.html">Word Counter</a></li>
+                        <li><a href="text-case-converter.html">Text Case Converter</a></li>
+                        <li><a href="remove-line-breaks.html">Remove Line Breaks</a></li>
+                        <li><a href="remove-spaces.html">Remove Extra Spaces</a></li>
+                        <li><a href="text-diff.html">Text Diff Checker</a></li>
+                        <li><a href="random-password.html">Random Password Generator</a></li>
+                    </ul>
+                </div>
+
+                <!-- Image Tools -->
+                <div class="category-card">
+                    <div class="category-header">Image Tools</div>
+                    <ul class="tools-list">
+                        <li><a href="image-compressor.html">Image Compressor</a></li>
+                        <li><a href="image-resizer.html">Image Resizer</a></li>
+                        <li><a href="image-converter.html">Image Format Converter</a></li>
+                        <li><a href="remove-bg.html">Remove Background</a></li>
+                        <li><a href="image-to-text.html">Image to Text (OCR)</a></li>
+                        <li><a href="color-picker.html">Color Picker Tool</a></li>
+                    </ul>
+                </div>
+
+                <!-- Developer Tools -->
+                <div class="category-card">
+                    <div class="category-header">Developer Tools</div>
+                    <ul class="tools-list">
+                        <li><a href="json-formatter.html">JSON Formatter</a></li>
+                        <li><a href="html-escape.html">HTML Escape/Unescape</a></li>
+                        <li><a href="base64-encode.html">Base64 Encode/Decode</a></li>
+                        <li><a href="url-encode.html">URL Encode/Decode</a></li>
+                        <li><a href="sql-formatter.html">SQL Formatter</a></li>
+                        <li><a href="regex-tester.html">Regex Tester</a></li>
+                    </ul>
+                </div>
+
+                <!-- SEO Tools -->
+                <div class="category-card">
+                    <div class="category-header">SEO Tools</div>
+                    <ul class="tools-list">
+                        <li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
+                        <li><a href="robots-txt-generator.html">Robots.txt Generator</a></li>
+                        <li><a href="sitemap-generator.html">Sitemap Generator</a></li>
+                        <li><a href="keyword-density.html">Keyword Density Checker</a></li>
+                        <li><a href="backlink-checker.html">Backlink Checker</a></li>
+                        <li><a href="website-speed-test.html">Website Speed Test</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Tools?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Fast Processing</h3>
+                    <p>Our tools work directly in your browser, ensuring lightning-fast processing without server delays.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy Focused</h3>
+                    <p>Your files never leave your computer. We process everything locally for maximum privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💯</div>
+                    <h3>100% Free</h3>
+                    <p>All our tools are completely free to use with no hidden charges or premium tiers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices - desktop, tablet, and mobile phones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ToolKit</h3>
+                    <p>Your all-in-one solution for online tools. Free, fast, and easy-to-use tools for everyone.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com" aria-label="Twitter"><span>🐦</span></a>
+                        <a href="https://linkedin.com" aria-label="LinkedIn"><span>🔗</span></a>
+                        <a href="https://github.com" aria-label="GitHub"><span>🐱</span></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Popular Tools</h3>
+                    <ul class="footer-links">
+                        <li><a href="pdf-to-word.html">PDF to Word</a></li>
+                        <li><a href="image-compressor.html">Image Compressor</a></li>
+                        <li><a href="word-counter.html">Word Counter</a></li>
+                        <li><a href="json-formatter.html">JSON Formatter</a></li>
+                        <li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Support</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="feedback.html">Send Feedback</a></li>
+                        <li><a href="suggest-tool.html">Suggest a Tool</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> ToolKit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference or use preferred color scheme
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.querySelector('span:last-child').textContent = 'Light Mode';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDarkMode = body.classList.contains('dark-mode');
+            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+            themeToggle.querySelector('span:last-child').textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Simulate search functionality
+        const searchInput = document.querySelector('.search-bar input');
+        const searchButton = document.querySelector('.search-bar button');
+
+        searchButton.addEventListener('click', () => {
+            alert(`Search functionality will be implemented later. You searched for: "${searchInput.value}"`);
+        });
+
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                alert(`Search functionality will be implemented later. You searched for: "${searchInput.value}"`);
+            }
+        });
+    </script>
+</body>
+</html>

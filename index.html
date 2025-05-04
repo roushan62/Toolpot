@@ -482,77 +482,341 @@
     </section>
 
     <!-- Tools Section -->
-    <section class="tools-section">
-        <div class="container">
-            <h2 class="section-title">Browse Tools by Category</h2>
-            <div class="categories-grid">
-                <!-- PDF Tools -->
-                <div class="category-card">
-                    <div class="category-header">PDF Tools</div>
-                    <ul class="tools-list">
-                        <li><a href="pdf-to-word.html">PDF to Word Converter</a></li>
-                        <li><a href="merge-pdf.html">Merge PDF Files</a></li>
-                        <li><a href="split-pdf.html">Split PDF</a></li>
-                        <li><a href="compress-pdf.html">Compress PDF</a></li>
-                        <li><a href="pdf-to-jpg.html">PDF to JPG Converter</a></li>
-                        <li><a href="word-to-pdf.html">Word to PDF Converter</a></li>
-                    </ul>
+<section class="tools-section">
+    <div class="container">
+        <h2 class="section-title">Browse Tools by Category</h2>
+        <p class="section-subtitle">Discover our collection of powerful online tools to simplify your work</p>
+        
+        <div class="categories-grid">
+            <!-- PDF Tools -->
+            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.3 10.7 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"/></svg>
+                    </div>
+                    <h3>PDF Tools</h3>
                 </div>
-
-                <!-- Text Tools -->
-                <div class="category-card">
-                    <div class="category-header">Text Tools</div>
-                    <ul class="tools-list">
-                        <li><a href="word-counter.html">Word Counter</a></li>
-                        <li><a href="text-case-converter.html">Text Case Converter</a></li>
-                        <li><a href="remove-line-breaks.html">Remove Line Breaks</a></li>
-                        <li><a href="remove-spaces.html">Remove Extra Spaces</a></li>
-                        <li><a href="text-diff.html">Text Diff Checker</a></li>
-                        <li><a href="random-password.html">Random Password Generator</a></li>
-                    </ul>
+                <ul class="tools-list">
+                    <li><a href="pdf-to-word.html" class="tool-link"><span class="tool-icon">→</span> PDF to Word Converter</a></li>
+                    <li><a href="merge-pdf.html" class="tool-link"><span class="tool-icon">→</span> Merge PDF Files</a></li>
+                    <li><a href="split-pdf.html" class="tool-link"><span class="tool-icon">→</span> Split PDF</a></li>
+                    <li><a href="compress-pdf.html" class="tool-link"><span class="tool-icon">→</span> Compress PDF</a></li>
+                    <li><a href="pdf-to-jpg.html" class="tool-link"><span class="tool-icon">→</span> PDF to JPG Converter</a></li>
+                    <li><a href="word-to-pdf.html" class="tool-link"><span class="tool-icon">→</span> Word to PDF Converter</a></li>
+                </ul>
+                <div class="category-footer">
+                    <a href="#" class="view-all">View all PDF tools</a>
                 </div>
+            </div>
 
-                <!-- Image Tools -->
-                <div class="category-card">
-                    <div class="category-header">Image Tools</div>
-                    <ul class="tools-list">
-                        <li><a href="image-compressor.html">Image Compressor</a></li>
-                        <li><a href="image-resizer.html">Image Resizer</a></li>
-                        <li><a href="image-converter.html">Image Format Converter</a></li>
-                        <li><a href="remove-bg.html">Remove Background</a></li>
-                        <li><a href="image-to-text.html">Image to Text (OCR)</a></li>
-                        <li><a href="color-picker.html">Color Picker Tool</a></li>
-                    </ul>
+            <!-- Text Tools -->
+            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z"/></svg>
+                    </div>
+                    <h3>Text Tools</h3>
                 </div>
-
-                <!-- Developer Tools -->
-                <div class="category-card">
-                    <div class="category-header">Developer Tools</div>
-                    <ul class="tools-list">
-                        <li><a href="json-formatter.html">JSON Formatter</a></li>
-                        <li><a href="html-escape.html">HTML Escape/Unescape</a></li>
-                        <li><a href="base64-encode.html">Base64 Encode/Decode</a></li>
-                        <li><a href="url-encode.html">URL Encode/Decode</a></li>
-                        <li><a href="sql-formatter.html">SQL Formatter</a></li>
-                        <li><a href="regex-tester.html">Regex Tester</a></li>
-                    </ul>
+                <ul class="tools-list">
+                    <li><a href="word-counter.html" class="tool-link"><span class="tool-icon">→</span> Word Counter</a></li>
+                    <li><a href="text-case-converter.html" class="tool-link"><span class="tool-icon">→</span> Text Case Converter</a></li>
+                    <li><a href="remove-line-breaks.html" class="tool-link"><span class="tool-icon">→</span> Remove Line Breaks</a></li>
+                    <li><a href="remove-spaces.html" class="tool-link"><span class="tool-icon">→</span> Remove Extra Spaces</a></li>
+                    <li><a href="text-diff.html" class="tool-link"><span class="tool-icon">→</span> Text Diff Checker</a></li>
+                    <li><a href="random-password.html" class="tool-link"><span class="tool-icon">→</span> Random Password Generator</a></li>
+                </ul>
+                <div class="category-footer">
+                    <a href="#" class="view-all">View all text tools</a>
                 </div>
+            </div>
 
-                <!-- SEO Tools -->
-                <div class="category-card">
-                    <div class="category-header">SEO Tools</div>
-                    <ul class="tools-list">
-                        <li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
-                        <li><a href="robots-txt-generator.html">Robots.txt Generator</a></li>
-                        <li><a href="sitemap-generator.html">Sitemap Generator</a></li>
-                        <li><a href="keyword-density.html">Keyword Density Checker</a></li>
-                        <li><a href="backlink-checker.html">Backlink Checker</a></li>
-                        <li><a href="website-speed-test.html">Website Speed Test</a></li>
-                    </ul>
+            <!-- Image Tools -->
+            <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"/></svg>
+                    </div>
+                    <h3>Image Tools</h3>
+                </div>
+                <ul class="tools-list">
+                    <li><a href="image-compressor.html" class="tool-link"><span class="tool-icon">→</span> Image Compressor</a></li>
+                    <li><a href="image-resizer.html" class="tool-link"><span class="tool-icon">→</span> Image Resizer</a></li>
+                    <li><a href="image-converter.html" class="tool-link"><span class="tool-icon">→</span> Image Format Converter</a></li>
+                    <li><a href="remove-bg.html" class="tool-link"><span class="tool-icon">→</span> Remove Background</a></li>
+                    <li><a href="image-to-text.html" class="tool-link"><span class="tool-icon">→</span> Image to Text (OCR)</a></li>
+                    <li><a href="color-picker.html" class="tool-link"><span class="tool-icon">→</span> Color Picker Tool</a></li>
+                </ul>
+                <div class="category-footer">
+                    <a href="#" class="view-all">View all image tools</a>
+                </div>
+            </div>
+
+            <!-- Developer Tools -->
+            <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg>
+                    </div>
+                    <h3>Developer Tools</h3>
+                </div>
+                <ul class="tools-list">
+                    <li><a href="json-formatter.html" class="tool-link"><span class="tool-icon">→</span> JSON Formatter</a></li>
+                    <li><a href="html-escape.html" class="tool-link"><span class="tool-icon">→</span> HTML Escape/Unescape</a></li>
+                    <li><a href="base64-encode.html" class="tool-link"><span class="tool-icon">→</span> Base64 Encode/Decode</a></li>
+                    <li><a href="url-encode.html" class="tool-link"><span class="tool-icon">→</span> URL Encode/Decode</a></li>
+                    <li><a href="sql-formatter.html" class="tool-link"><span class="tool-icon">→</span> SQL Formatter</a></li>
+                    <li><a href="regex-tester.html" class="tool-link"><span class="tool-icon">→</span> Regex Tester</a></li>
+                </ul>
+                <div class="category-footer">
+                    <a href="#" class="view-all">View all developer tools</a>
+                </div>
+            </div>
+
+            <!-- SEO Tools -->
+            <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></svg>
+                    </div>
+                    <h3>SEO Tools</h3>
+                </div>
+                <ul class="tools-list">
+                    <li><a href="meta-tag-generator.html" class="tool-link"><span class="tool-icon">→</span> Meta Tag Generator</a></li>
+                    <li><a href="robots-txt-generator.html" class="tool-link"><span class="tool-icon">→</span> Robots.txt Generator</a></li>
+                    <li><a href="sitemap-generator.html" class="tool-link"><span class="tool-icon">→</span> Sitemap Generator</a></li>
+                    <li><a href="keyword-density.html" class="tool-link"><span class="tool-icon">→</span> Keyword Density Checker</a></li>
+                    <li><a href="backlink-checker.html" class="tool-link"><span class="tool-icon">→</span> Backlink Checker</a></li>
+                    <li><a href="website-speed-test.html" class="tool-link"><span class="tool-icon">→</span> Website Speed Test</a></li>
+                </ul>
+                <div class="category-footer">
+                    <a href="#" class="view-all">View all SEO tools</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+.tools-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f9fbfd 0%, #f0f4f8 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 4px;
+    background: #4a90e2;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.category-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.category-card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #4a90e2, #8e44ad);
+    z-index: -1;
+}
+
+.category-header {
+    padding: 25px 25px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    background: #f0f4f8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.category-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #4a90e2;
+}
+
+.category-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #2c3e50;
+}
+
+.tools-list {
+    padding: 15px 0;
+    margin: 0;
+    list-style: none;
+}
+
+.tools-list li {
+    padding: 0 25px;
+    margin: 5px 0;
+}
+
+.tool-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    color: #34495e;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+}
+
+.tool-link:hover {
+    color: #4a90e2;
+    background: #f8fafc;
+    padding-left: 10px;
+}
+
+.tool-icon {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #4a90e2;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.tool-link:hover .tool-icon {
+    opacity: 1;
+    margin-right: 15px;
+}
+
+.category-footer {
+    padding: 15px 25px;
+    border-top: 1px solid #eee;
+    text-align: right;
+}
+
+.view-all {
+    color: #7f8c8d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.view-all:hover {
+    color: #4a90e2;
+}
+
+.view-all:after {
+    content: '→';
+    margin-left: 5px;
+    transition: all 0.2s ease;
+}
+
+.view-all:hover:after {
+    margin-left: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.category-card {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.category-card:nth-child(1) { animation-delay: 0.1s; }
+.category-card:nth-child(2) { animation-delay: 0.2s; }
+.category-card:nth-child(3) { animation-delay: 0.3s; }
+.category-card:nth-child(4) { animation-delay: 0.4s; }
+.category-card:nth-child(5) { animation-delay: 0.5s; }
+</style>
+
+<!-- Add this before closing body tag if using AOS library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+    });
+</script>
 
     <!-- Features Section -->
     <section class="features">

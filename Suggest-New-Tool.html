@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Suggest new tools for Toolpot - your feedback helps us improve our free online tools">
+    <meta name="keywords" content="tool suggestion, feedback, tool ideas, online tools, web utilities">
+    <meta name="author" content="Toolpot">
+    <title>Suggest a Tool | Toolpot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7ff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .subtitle {
+            color: var(--gray);
+            font-weight: 400;
+            font-size: 16px;
+            max-width: 600px;
+        }
+
+        .main-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .main-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .tool-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .tool-list li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            margin-top: 50px;
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .thank-you i {
+            font-size: 60px;
+            color: #4bb543;
+            margin-bottom: 20px;
+        }
+
+        .thank-you h2 {
+            font-size: 28px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .thank-you p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            .main-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tools"></i>
+                    <span>Toolpot</span>
+                </div>
+                <p class="subtitle">Your feedback helps us create better tools for everyone</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="suggestion-form">
+            <div class="main-card">
+                <h2 class="card-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Suggest a New Tool
+                </h2>
+                
+                <form id="tool-suggestion-form">
+                    <div class="form-group">
+                        <label for="tool-name">Tool Name</label>
+                        <input type="text" id="tool-name" placeholder="What would you call this tool?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tool-description">Tool Description</label>
+                        <textarea id="tool-description" placeholder="What does this tool do? How would it help users?" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tool-category">Category</label>
+                        <select id="tool-category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="text">Text Tools</option>
+                            <option value="image">Image Tools</option>
+                            <option value="coding">Coding Tools</option>
+                            <option value="productivity">Productivity</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email (optional)</label>
+                        <input type="email" id="email" placeholder="If you'd like us to follow up with you">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-block">
+                        <i class="fas fa-paper-plane"></i> Submit Suggestion
+                    </button>
+                </form>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Processing</h3>
+                    <p class="feature-desc">Our tools are optimized for quick results without unnecessary delays.</p>
+                    <ul class="tool-list">
+                        <li>Word Counter</li>
+                        <li>Character Counter</li>
+                        <li>Case Converter</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-desc">All processing happens in your browser - we never send your data to servers.</p>
+                    <ul class="tool-list">
+                        <li>Password Generator</li>
+                        <li>Encryption Tools</li>
+                        <li>Data Formatter</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-desc">All our tools work perfectly on any device, anywhere.</p>
+                    <ul class="tool-list">
+                        <li>QR Code Generator</li>
+                        <li>Clipboard Tools</li>
+                        <li>Image Resizer</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="main-card">
+                <h2 class="card-title">
+                    <i class="fas fa-question-circle"></i>
+                    What Makes a Good Tool Suggestion?
+                </h2>
+                <p>We're looking for tool ideas that:</p>
+                <ul style="margin-top: 15px; margin-left: 20px;">
+                    <li>Solve a specific problem for many users</li>
+                    <li>Can be implemented as a browser-based tool</li>
+                    <li>Don't require server-side processing (we prefer client-side only)</li>
+                    <li>Are unique or improve on existing tools</li>
+                    <li>Would be useful for developers, writers, or general users</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div id="thank-you" class="thank-you">
+            <i class="fas fa-check-circle"></i>
+            <h2>Thank You for Your Suggestion!</h2>
+            <p>We've received your tool idea and will review it soon. If we implement your suggestion, we'll credit you on our website (if you provided your email).</p>
+            <button id="new-suggestion" class="btn btn-accent">
+                <i class="fas fa-plus"></i> Suggest Another Tool
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="copyright">© <span id="year"></span> Toolpot. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Handle form submission
+            const form = document.getElementById('tool-suggestion-form');
+            const suggestionForm = document.getElementById('suggestion-form');
+            const thankYou = document.getElementById('thank-you');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real implementation, you would send the data to a server here
+                // For this demo, we'll just show the thank you message
+                
+                // Get form values
+                const toolName = document.getElementById('tool-name').value;
+                const toolDescription = document.getElementById('tool-description').value;
+                const toolCategory = document.getElementById('tool-category').value;
+                const email = document.getElementById('email').value;
+                
+                // Store in localStorage (for demo purposes)
+                const suggestion = {
+                    name: toolName,
+                    description: toolDescription,
+                    category: toolCategory,
+                    email: email,
+                    date: new Date().toISOString()
+                };
+                
+                let suggestions = JSON.parse(localStorage.getItem('toolSuggestions') || '[]');
+                suggestions.push(suggestion);
+                localStorage.setItem('toolSuggestions', JSON.stringify(suggestions));
+                
+                // Show thank you message
+                suggestionForm.style.display = 'none';
+                thankYou.style.display = 'block';
+                
+                // Scroll to thank you message
+                thankYou.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Handle new suggestion button
+            document.getElementById('new-suggestion').addEventListener('click', function() {
+                // Reset form
+                form.reset();
+                
+                // Show form again
+                suggestionForm.style.display = 'block';
+                thankYou.style.display = 'none';
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

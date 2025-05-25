@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently asked questions about Toolpot - your all-in-one web tools collection">
+    <meta name="keywords" content="Toolpot, FAQ, web tools, online utilities, free tools">
+    <meta name="author" content="Toolpot">
+    <title>Toolpot - Frequently Asked Questions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .faq-question.active::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .faq-answer.show {
+            max-height: 500px;
+            margin-top: 10px;
+        }
+
+        .features-section {
+            margin: 50px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #e9ecef;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            header p {
+                font-size: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Toolpot FAQ</h1>
+            <p>Find answers to common questions about our collection of free, easy-to-use web tools</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What is Toolpot?</div>
+                    <div class="faq-answer">
+                        <p>Toolpot is a collection of free, easy-to-use web tools designed to help you with various tasks like text manipulation, image conversion, coding utilities, and more. All tools work directly in your browser without requiring any downloads or installations.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is Toolpot free to use?</div>
+                    <div class="faq-answer">
+                        <p>Yes! All tools on Toolpot are completely free to use with no hidden charges. We believe in providing accessible tools for everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to create an account?</div>
+                    <div class="faq-answer">
+                        <p>No account is required to use any of the tools on Toolpot. All tools work immediately without any sign-up process.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Is my data safe when using Toolpot?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely! All processing happens locally in your browser. Your data never leaves your device unless you explicitly choose to save or share it.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I use Toolpot on mobile devices?</div>
+                    <div class="faq-answer">
+                        <p>Yes, Toolpot is fully responsive and works on all devices including smartphones and tablets. The interface automatically adjusts to your screen size.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How often are new tools added?</div>
+                    <div class="faq-answer">
+                        <p>We regularly add new tools based on user feedback and emerging needs. If you have a tool suggestion, feel free to reach out to us!</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Can I contribute to Toolpot?</div>
+                    <div class="faq-answer">
+                        <p>We're open to collaborations! If you're a developer interested in contributing tools or improving existing ones, please contact us with your ideas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-star"></i> Why Choose Toolpot?</h2>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3 class="feature-title">Fast Processing</h3>
+                            <p>Our tools like the Word Counter, Image Compressor, and JSON Formatter provide instant results with no waiting time.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <h3 class="feature-title">Secure & Private</h3>
+                            <p>Tools like Password Generator and Text Encryptor process everything locally in your browser - your data never leaves your device.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Mobile Friendly</h3>
+                            <p>All tools including QR Code Generator and Color Picker are optimized for seamless use on any device.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="feature-title">Wide Variety</h3>
+                            <p>From SEO tools like Meta Tag Generator to developer utilities like Base64 Encoder, we cover diverse needs.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-adjust"></i>
+                            </div>
+                            <h3 class="feature-title">Clean Interface</h3>
+                            <p>Tools like the PDF Merger and Video Converter feature intuitive designs that make complex tasks simple.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3 class="feature-title">Regular Updates</h3>
+                            <p>We continuously improve existing tools and add new ones based on user feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> Toolpot. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ accordion functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                // Toggle active class on question
+                question.classList.toggle('active');
+                
+                // Get the answer element
+                const answer = question.nextElementSibling;
+                
+                // Toggle show class on answer
+                answer.classList.toggle('show');
+                
+                // Close other open answers
+                faqQuestions.forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Open first FAQ by default
+        if (faqQuestions.length > 0) {
+            faqQuestions[0].classList.add('active');
+            faqQuestions[0].nextElementSibling.classList.add('show');
+        }
+    </script>
+</body>
+</html>

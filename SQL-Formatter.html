@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online SQL Formatter tool that beautifies and formats your SQL queries instantly. Works locally in your browser - no data sent to servers.">
+    <meta name="keywords" content="SQL Formatter, SQL Beautifier, SQL Query Formatter, SQL Pretty Print, SQL Formatting Tool">
+    <meta name="author" content="Your Name">
+    <title>SQL Formatter | Beautify & Format SQL Queries Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SQL Formatter</h1>
+            <p class="subtitle">Beautify and format your SQL queries instantly with this free online tool. Works directly in your browser - no data is sent to servers.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-database"></i> SQL Formatter</h2>
+                <textarea id="sql-input" placeholder="Paste your SQL query here..."></textarea>
+                <div class="actions">
+                    <button id="format-btn" class="btn"><i class="fas fa-magic"></i> Format SQL</button>
+                    <button id="clear-btn" class="btn btn-outline"><i class="fas fa-trash"></i> Clear</button>
+                    <button id="copy-btn" class="btn btn-accent"><i class="fas fa-copy"></i> Copy</button>
+                    <button id="download-btn" class="btn"><i class="fas fa-download"></i> Download</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="query-length">0</div>
+                    <div class="stat-label">Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="line-count">0</div>
+                    <div class="stat-label">Lines</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="keyword-count">0</div>
+                    <div class="stat-label">SQL Keywords</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="table-count">0</div>
+                    <div class="stat-label">Tables</div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="feature-title">Fast Processing</h3>
+                    <p>Our SQL formatter works instantly in your browser with no delays. No server processing means lightning-fast results.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p>All processing happens locally in your browser. Your SQL queries never leave your computer, ensuring complete privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p>Works perfectly on all devices - smartphones, tablets, and desktops. Format SQL queries wherever you are.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-code"></i></div>
+                    <h3 class="feature-title">Standard Formatting</h3>
+                    <p>Follows common SQL formatting conventions with proper indentation, line breaks, and keyword highlighting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3 class="feature-title">No Dependencies</h3>
+                    <p>Works completely client-side with no external libraries or frameworks required. Just pure JavaScript.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-infinity"></i></div>
+                    <h3 class="feature-title">Unlimited Use</h3>
+                    <p>Completely free with no limits on usage. Format as many SQL queries as you need, as often as you want.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-SQL Formatter Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Get DOM elements
+            const sqlInput = document.getElementById('sql-input');
+            const formatBtn = document.getElementById('format-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const queryLength = document.getElementById('query-length');
+            const lineCount = document.getElementById('line-count');
+            const keywordCount = document.getElementById('keyword-count');
+            const tableCount = document.getElementById('table-count');
+            
+            // Update stats on input
+            sqlInput.addEventListener('input', updateStats);
+            
+            // Button event listeners
+            formatBtn.addEventListener('click', formatSQL);
+            clearBtn.addEventListener('click', clearInput);
+            copyBtn.addEventListener('click', copyToClipboard);
+            downloadBtn.addEventListener('click', downloadSQL);
+            
+            // Update statistics
+            function updateStats() {
+                const text = sqlInput.value;
+                queryLength.textContent = text.length;
+                lineCount.textContent = text ? text.split('\n').length : 0;
+                
+                // Count SQL keywords (simplified)
+                const keywords = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'INNER', 'OUTER', 'LEFT', 'RIGHT', 
+                                  'GROUP BY', 'ORDER BY', 'HAVING', 'INSERT', 'INTO', 'UPDATE', 'DELETE', 
+                                  'CREATE', 'ALTER', 'DROP', 'TABLE', 'VIEW', 'INDEX', 'TRIGGER', 'PROCEDURE', 
+                                  'FUNCTION', 'BEGIN', 'END', 'DECLARE', 'SET', 'VALUES', 'AND', 'OR', 'NOT', 
+                                  'AS', 'ON', 'IN', 'BETWEEN', 'LIKE', 'IS', 'NULL', 'DISTINCT', 'COUNT', 
+                                  'SUM', 'AVG', 'MIN', 'MAX', 'CASE', 'WHEN', 'THEN', 'ELSE'];
+                
+                let keywordMatches = 0;
+                keywords.forEach(kw => {
+                    const regex = new RegExp(`\\b${kw}\\b`, 'gi');
+                    const matches = text.match(regex);
+                    if (matches) keywordMatches += matches.length;
+                });
+                keywordCount.textContent = keywordMatches;
+                
+                // Count tables (simplified - looks for FROM/JOIN clauses)
+                const tableRegex = /(?:FROM|JOIN)\s+([\w.]+)/gi;
+                const tables = new Set();
+                let match;
+                while ((match = tableRegex.exec(text)) !== null) {
+                    tables.add(match[1]);
+                }
+                tableCount.textContent = tables.size;
+            }
+            
+            // Format SQL function
+            function formatSQL() {
+                let sql = sqlInput.value.trim();
+                if (!sql) return;
+                
+                // Basic formatting (this is a simplified version)
+                // In a real application, you might want to use a more sophisticated SQL parser
+                
+                // Standardize line breaks
+                sql = sql.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+                
+                // Add spaces around operators
+                sql = sql.replace(/([=<>!]+)(?=[^\s])/g, ' $1 ');
+                sql = sql.replace(/([^\s])([=<>!]+)/g, '$1 $2');
+                
+                // Indent clauses
+                const keywords = ['SELECT', 'FROM', 'WHERE', 'JOIN', 'GROUP BY', 'ORDER BY', 'HAVING', 
+                                'INSERT INTO', 'UPDATE', 'DELETE FROM', 'CREATE TABLE', 'ALTER TABLE'];
+                
+                keywords.forEach(kw => {
+                    const regex = new RegExp(`\\b${kw}\\b`, 'gi');
+                    sql = sql.replace(regex, `\n${kw}`);
+                });
+                
+                // Add new lines after commas in SELECT
+                sql = sql.replace(/(SELECT\s+)([^\n]+)(?=\nFROM)/gi, (match, p1, p2) => {
+                    return p1 + p2.replace(/,/g, ',\n    ');
+                });
+                
+                // Indent JOIN conditions
+                sql = sql.replace(/(\n\s*)(ON\s+)([^\n]+)/gi, '$1    $2$3');
+                
+                // Indent WHERE conditions
+                sql = sql.replace(/(\n\s*)(WHERE\s+)([^\n]+)/gi, (match, p1, p2, p3) => {
+                    return p1 + p2 + p3.replace(/(AND|OR)\s+/gi, '\n        $1 ');
+                });
+                
+                // Clean up multiple newlines
+                sql = sql.replace(/\n{3,}/g, '\n\n');
+                
+                // Trim and set formatted SQL
+                sqlInput.value = sql.trim();
+                updateStats();
+            }
+            
+            // Clear input
+            function clearInput() {
+                sqlInput.value = '';
+                updateStats();
+            }
+            
+            // Copy to clipboard
+            function copyToClipboard() {
+                sqlInput.select();
+                document.execCommand('copy');
+                
+                // Show feedback
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            }
+            
+            // Download SQL
+            function downloadSQL() {
+                const text = sqlInput.value;
+                if (!text) return;
+                
+                const blob = new Blob([text], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'formatted_query.sql';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        });
+    </script>
+</body>
+</html>

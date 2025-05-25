@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online HTML escape/unescape tool. Securely convert special characters to HTML entities or decode them back to normal text.">
+    <meta name="keywords" content="HTML escape, HTML unescape, HTML entities, web development tool, encoder, decoder">
+    <meta name="author" content="Your Name">
+    <title>HTML Escape/Unescape Tool | Secure Online Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+
+        .btn-secondary {
+            background-color: var(--light);
+            color: var(--dark);
+            border: 1px solid #ddd;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e9ecef;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a86d4;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .switch-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            margin-right: 10px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .switch-label {
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>HTML Escape/Unescape Tool</h1>
+            <p>Securely convert special characters to HTML entities or decode them back to normal text. All processing happens in your browser for maximum privacy.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-code"></i> HTML Converter</h2>
+                
+                <div class="switch-container">
+                    <label class="switch">
+                        <input type="checkbox" id="modeToggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="switch-label" id="modeLabel">Escape Mode</span>
+                </div>
+                
+                <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+                
+                <div class="btn-group">
+                    <button id="convertBtn" class="btn btn-primary">
+                        <i class="fas fa-exchange-alt"></i> Convert
+                    </button>
+                    <button id="clearBtn" class="btn btn-secondary">
+                        <i class="fas fa-trash-alt"></i> Clear
+                    </button>
+                    <button id="copyBtn" class="btn btn-accent">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button id="downloadBtn" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                
+                <textarea id="outputText" placeholder="Your converted text will appear here..." readonly></textarea>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="inputLength">0</div>
+                    <div class="stat-label">Input Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="outputLength">0</div>
+                    <div class="stat-label">Output Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="conversionRatio">0%</div>
+                    <div class="stat-label">Size Change</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="entityCount">0</div>
+                    <div class="stat-label">HTML Entities</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 20px; color: var(--primary);">Why Use Our HTML Escape Tool?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-desc">Our tool processes your text instantly as you type, with no server delays. Experience real-time conversion without waiting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">100% Secure</h3>
+                    <p class="feature-desc">All processing happens in your browser. Your data never leaves your device, ensuring complete privacy and security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-desc">Works perfectly on all devices - smartphones, tablets, and desktops. The interface adapts to your screen size.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="feature-title">Advanced Features</h3>
+                    <p class="feature-desc">Includes smart detection, detailed stats, copy/paste functions, and download options for your convenience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                    <h3 class="feature-title">Dual Mode</h3>
+                    <p class="feature-desc">Switch between escaping and unescaping with one click. Perfect for developers working with HTML content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="feature-title">Detailed Analytics</h3>
+                    <p class="feature-desc">Get instant stats about your conversion including character counts, size changes, and entity information.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="currentYear"></ToolPot-span> HTML Escape/Unescape Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // DOM elements
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            const convertBtn = document.getElementById('convertBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const modeToggle = document.getElementById('modeToggle');
+            const modeLabel = document.getElementById('modeLabel');
+            
+            // Stats elements
+            const inputLength = document.getElementById('inputLength');
+            const outputLength = document.getElementById('outputLength');
+            const conversionRatio = document.getElementById('conversionRatio');
+            const entityCount = document.getElementById('entityCount');
+            
+            // Mode state (true = escape, false = unescape)
+            let isEscapeMode = true;
+            
+            // Initialize the tool
+            function init() {
+                updatePlaceholders();
+                updateStats();
+                
+                // Event listeners
+                convertBtn.addEventListener('click', convertText);
+                clearBtn.addEventListener('click', clearText);
+                copyBtn.addEventListener('click', copyOutput);
+                downloadBtn.addEventListener('click', downloadOutput);
+                modeToggle.addEventListener('change', toggleMode);
+                inputText.addEventListener('input', updateStats);
+                
+                // Auto-convert option (uncomment if you want real-time conversion)
+                // inputText.addEventListener('input', convertText);
+            }
+            
+            // Toggle between escape and unescape mode
+            function toggleMode() {
+                isEscapeMode = !isEscapeMode;
+                updatePlaceholders();
+                modeLabel.textContent = isEscapeMode ? 'Escape Mode' : 'Unescape Mode';
+                
+                // If there's input text, convert it immediately when mode changes
+                if (inputText.value.trim()) {
+                    convertText();
+                }
+            }
+            
+            // Update input/output placeholders based on mode
+            function updatePlaceholders() {
+                inputText.placeholder = isEscapeMode 
+                    ? 'Enter your text with special characters to escape...' 
+                    : 'Enter your HTML escaped text to unescape...';
+                
+                outputText.placeholder = isEscapeMode 
+                    ? 'Your escaped HTML will appear here...' 
+                    : 'Your unescaped text will appear here...';
+            }
+            
+            // Convert text based on current mode
+            function convertText() {
+                const text = inputText.value;
+                let result = '';
+                
+                if (isEscapeMode) {
+                    result = escapeHtml(text);
+                } else {
+                    result = unescapeHtml(text);
+                }
+                
+                outputText.value = result;
+                updateStats();
+            }
+            
+            // Escape HTML special characters
+            function escapeHtml(text) {
+                return text.replace(/[&<>"'`=\/]/g, function(match) {
+                    return {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;',
+                        '`': '&#x60;',
+                        '=': '&#x3D;',
+                        '/': '&#x2F;'
+                    }[match];
+                });
+            }
+            
+            // Unescape HTML entities
+            function unescapeHtml(text) {
+                const entities = {
+                    '&amp;': '&',
+                    '&lt;': '<',
+                    '&gt;': '>',
+                    '&quot;': '"',
+                    '&#39;': "'",
+                    '&#x60;': '`',
+                    '&#x3D;': '=',
+                    '&#x2F;': '/'
+                };
+                
+                return text.replace(/&amp;|&lt;|&gt;|&quot;|&#39;|&#x60;|&#x3D;|&#x2F;/g, function(match) {
+                    return entities[match];
+                });
+            }
+            
+            // Clear both input and output
+            function clearText() {
+                inputText.value = '';
+                outputText.value = '';
+                updateStats();
+                inputText.focus();
+            }
+            
+            // Copy output to clipboard
+            function copyOutput() {
+                if (!outputText.value) return;
+                
+                outputText.select();
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            }
+            
+            // Download output as text file
+            function downloadOutput() {
+                if (!outputText.value) return;
+                
+                const blob = new Blob([outputText.value], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                
+                a.href = url;
+                a.download = isEscapeMode ? 'escaped_html.txt' : 'unescaped_text.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            
+            // Update statistics
+            function updateStats() {
+                const input = inputText.value;
+                const output = outputText.value;
+                
+                // Basic counts
+                inputLength.textContent = input.length;
+                outputLength.textContent = output.length;
+                
+                // Conversion ratio (size change)
+                if (input.length > 0) {
+                    const ratio = Math.round((output.length / input.length) * 100);
+                    conversionRatio.textContent = ratio + '%';
+                    conversionRatio.style.color = ratio > 100 ? '#dc3545' : ratio < 100 ? '#28a745' : '#6c757d';
+                } else {
+                    conversionRatio.textContent = '0%';
+                    conversionRatio.style.color = '#6c757d';
+                }
+                
+                // Count HTML entities in output (only in escape mode)
+                if (isEscapeMode && output) {
+                    const entityMatches = output.match(/&(amp|lt|gt|quot|#39|#x60|#x3D|#x2F);/g);
+                    entityCount.textContent = entityMatches ? entityMatches.length : '0';
+                } else {
+                    entityCount.textContent = '0';
+                }
+            }
+            
+            // Initialize the application
+            init();
+        });
+    </script>
+</body>
+</html>

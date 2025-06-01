@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate optimized meta tags for your website with this free tool. Improve SEO with properly structured meta tags.">
+    <meta name="keywords" content="meta tag generator, SEO tool, HTML meta tags, website optimization">
+    <meta name="author" content="Meta Tag Generator Tool">
+    <title>Meta Tag Generator | SEO Optimization Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.25);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .result-card {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent);
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .result-content {
+            background-color: white;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-tags"></i> Meta Tag Generator</h1>
+            <p>Generate optimized meta tags for your website to improve SEO and social media sharing</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-cog"></i> Meta Tag Configuration</h2>
+            
+            <div class="form-group">
+                <label for="pageTitle">Page Title</label>
+                <input type="text" id="pageTitle" placeholder="My Awesome Website">
+            </div>
+            
+            <div class="form-group">
+                <label for="pageDescription">Meta Description</label>
+                <textarea id="pageDescription" placeholder="A brief description of your page content (150-160 characters recommended)"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="pageKeywords">Keywords (comma separated)</label>
+                <input type="text" id="pageKeywords" placeholder="website, SEO, online business">
+            </div>
+            
+            <div class="form-group">
+                <label for="pageAuthor">Author</label>
+                <input type="text" id="pageAuthor" placeholder="Your Name or Company">
+            </div>
+            
+            <div class="form-group">
+                <label for="pageCharset">Charset</label>
+                <select id="pageCharset">
+                    <option value="UTF-8" selected>UTF-8 (Recommended)</option>
+                    <option value="ISO-8859-1">ISO-8859-1</option>
+                    <option value="UTF-16">UTF-16</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="pageViewport">Viewport Settings</label>
+                <select id="pageViewport">
+                    <option value="width=device-width, initial-scale=1.0" selected>Responsive (Recommended)</option>
+                    <option value="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">Responsive (No zoom)</option>
+                    <option value="width=1200">Fixed width (1200px)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="includeOG" checked> Include Open Graph (Social Media) Tags
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="includeTwitter" checked> Include Twitter Card Tags
+                </label>
+            </div>
+            
+            <div class="btn-group">
+                <button id="generateBtn" class="btn"><i class="fas fa-magic"></i> Generate Meta Tags</button>
+                <button id="resetBtn" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset Form</button>
+            </div>
+        </div>
+        
+        <div id="resultSection" class="hidden">
+            <div class="card result-card">
+                <h2 class="card-title"><i class="fas fa-code"></i> Generated Meta Tags</h2>
+                <p>Copy and paste these tags into the &lt;head&gt; section of your HTML document:</p>
+                
+                <div class="result-content" id="generatedTags">
+                    <!-- Generated tags will appear here -->
+                </div>
+                
+                <div class="btn-group" style="margin-top: 1rem;">
+                    <button id="copyBtn" class="btn btn-accent"><i class="fas fa-copy"></i> Copy to Clipboard</button>
+                    <button id="downloadBtn" class="btn"><i class="fas fa-download"></i> Download as HTML</button>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="margin: 2rem 0 1rem; color: var(--primary);">Why Use Our Meta Tag Generator?</h2>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="feature-title">Fast Processing</h3>
+                <p>Our tool generates SEO-optimized meta tags instantly, saving you time and effort in manual coding.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="feature-title">Secure & Private</h3>
+                <p>All processing happens locally in your browser. We don't store any of your data on our servers.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3 class="feature-title">Mobile Friendly</h3>
+                <p>Generates responsive viewport tags and social media meta tags that work perfectly on all devices.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="feature-title">SEO Optimized</h3>
+                <p>Creates tags following best practices to help search engines understand and rank your content.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h3 class="feature-title">Social Media Ready</h3>
+                <p>Includes Open Graph and Twitter Card tags for perfect sharing on social platforms.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="feature-title">Beginner Friendly</h3>
+                <p>No technical knowledge required. Just fill in the form and get ready-to-use code.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; <span id="currentYear"></span> ToolPot-Meta Tag Generator Tool</p>
+            <p>Free to use for personal and commercial projects</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Form elements
+            const generateBtn = document.getElementById('generateBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const resultSection = document.getElementById('resultSection');
+            
+            // Generate meta tags
+            generateBtn.addEventListener('click', function() {
+                const title = document.getElementById('pageTitle').value.trim();
+                const description = document.getElementById('pageDescription').value.trim();
+                const keywords = document.getElementById('pageKeywords').value.trim();
+                const author = document.getElementById('pageAuthor').value.trim();
+                const charset = document.getElementById('pageCharset').value;
+                const viewport = document.getElementById('pageViewport').value;
+                const includeOG = document.getElementById('includeOG').checked;
+                const includeTwitter = document.getElementById('includeTwitter').checked;
+                
+                if (!title) {
+                    alert('Please enter a page title');
+                    return;
+                }
+                
+                let metaTags = '';
+                
+                // Basic meta tags
+                metaTags += `&lt;title&gt;${escapeHtml(title)}&lt;/title&gt;\n`;
+                metaTags += `&lt;meta charset="${escapeHtml(charset)}"&gt;\n`;
+                metaTags += `&lt;meta name="viewport" content="${escapeHtml(viewport)}"&gt;\n`;
+                
+                if (description) {
+                    metaTags += `&lt;meta name="description" content="${escapeHtml(description)}"&gt;\n`;
+                }
+                
+                if (keywords) {
+                    metaTags += `&lt;meta name="keywords" content="${escapeHtml(keywords)}"&gt;\n`;
+                }
+                
+                if (author) {
+                    metaTags += `&lt;meta name="author" content="${escapeHtml(author)}"&gt;\n`;
+                }
+                
+                // Open Graph (Facebook) tags
+                if (includeOG) {
+                    metaTags += '\n&lt;!-- Open Graph / Facebook --&gt;\n';
+                    metaTags += `&lt;meta property="og:type" content="website"&gt;\n`;
+                    metaTags += `&lt;meta property="og:title" content="${escapeHtml(title)}"&gt;\n`;
+                    
+                    if (description) {
+                        metaTags += `&lt;meta property="og:description" content="${escapeHtml(description)}"&gt;\n`;
+                    }
+                    
+                    // Placeholder for URL and image - these would typically need to be added manually
+                    metaTags += '&lt;meta property="og:url" content="https://example.com/page-url"&gt;\n';
+                    metaTags += '&lt;meta property="og:image" content="https://example.com/image.jpg"&gt;\n';
+                }
+                
+                // Twitter Card tags
+                if (includeTwitter) {
+                    metaTags += '\n&lt;!-- Twitter --&gt;\n';
+                    metaTags += `&lt;meta name="twitter:card" content="summary_large_image"&gt;\n`;
+                    metaTags += `&lt;meta name="twitter:title" content="${escapeHtml(title)}"&gt;\n`;
+                    
+                    if (description) {
+                        metaTags += `&lt;meta name="twitter:description" content="${escapeHtml(description)}"&gt;\n`;
+                    }
+                    
+                    // Placeholder for URL and image
+                    metaTags += '&lt;meta name="twitter:image" content="https://example.com/image.jpg"&gt;\n';
+                }
+                
+                // Display the result
+                document.getElementById('generatedTags').innerHTML = metaTags;
+                resultSection.classList.remove('hidden');
+                
+                // Scroll to results
+                resultSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Reset form
+            resetBtn.addEventListener('click', function() {
+                document.getElementById('pageTitle').value = '';
+                document.getElementById('pageDescription').value = '';
+                document.getElementById('pageKeywords').value = '';
+                document.getElementById('pageAuthor').value = '';
+                document.getElementById('pageCharset').value = 'UTF-8';
+                document.getElementById('pageViewport').value = 'width=device-width, initial-scale=1.0';
+                document.getElementById('includeOG').checked = true;
+                document.getElementById('includeTwitter').checked = true;
+                
+                resultSection.classList.add('hidden');
+            });
+            
+            // Copy to clipboard
+            copyBtn.addEventListener('click', function() {
+                const generatedTags = document.getElementById('generatedTags').textContent;
+                
+                navigator.clipboard.writeText(generatedTags).then(function() {
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    
+                    setTimeout(function() {
+                        copyBtn.innerHTML = originalText;
+                    }, 2000);
+                }).catch(function(err) {
+                    console.error('Could not copy text: ', err);
+                    alert('Failed to copy text. Please try again.');
+                });
+            });
+            
+            // Download as HTML
+            downloadBtn.addEventListener('click', function() {
+                const generatedTags = document.getElementById('generatedTags').textContent;
+                const title = document.getElementById('pageTitle').value.trim() || 'meta-tags';
+                
+                const blob = new Blob([generatedTags], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                
+                a.href = url;
+                a.download = `${title.toLowerCase().replace(/\s+/g, '-')}-meta-tags.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            // Helper function to escape HTML
+            function escapeHtml(unsafe) {
+                return unsafe
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to quickly remove line breaks from your text. Works in your browser - no data is sent to servers.">
+    <meta name="keywords" content="remove line breaks, text formatting, online tool, text processing">
+    <meta name="author" content="Your Name">
+    <title>Remove Line Breaks Tool | Clean Text Formatting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 400;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Remove Line Breaks</h1>
+            <p class="subtitle">Clean up your text by removing unwanted line breaks instantly</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-align-left"></i> Text Input</h2>
+                <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+                <div class="btn-group">
+                    <button id="processBtn" class="btn"><i class="fas fa-magic"></i> Remove Line Breaks</button>
+                    <button id="clearBtn" class="btn btn-secondary"><i class="fas fa-trash"></i> Clear</button>
+                    <button id="copyBtn" class="btn btn-accent"><i class="fas fa-copy"></i> Copy Result</button>
+                </div>
+                <h2 class="card-title"><i class="fas fa-clipboard-check"></i> Processed Text</h2>
+                <textarea id="outputText" placeholder="Your cleaned text will appear here..." readonly></textarea>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="originalLength">0</div>
+                    <div class="stat-label">Original Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="processedLength">0</div>
+                    <div class="stat-label">Processed Characters</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="lineBreaksRemoved">0</div>
+                    <div class="stat-label">Line Breaks Removed</div>
+                </div>
+            </div>
+
+            <h2 class="card-title"><i class="fas fa-star"></i> Why Use Our Tool?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="feature-title">Fast Processing</h3>
+                    <p class="feature-desc">Get instant results as you type or paste your text. No waiting, no delays.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-desc">All processing happens in your browser. Your text never leaves your computer.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-desc">Works perfectly on all devices - smartphones, tablets, and desktops.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-Remove Line Breaks Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set copyright year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Get DOM elements
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            const processBtn = document.getElementById('processBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const originalLength = document.getElementById('originalLength');
+            const processedLength = document.getElementById('processedLength');
+            const lineBreaksRemoved = document.getElementById('lineBreaksRemoved');
+
+            // Process text to remove line breaks
+            function processText() {
+                const text = inputText.value;
+                const processedText = text.replace(/(\r\n|\n|\r)/gm, ' ');
+                
+                // Update output
+                outputText.value = processedText;
+                
+                // Update stats
+                updateStats(text, processedText);
+            }
+
+            // Update statistics
+            function updateStats(original, processed) {
+                originalLength.textContent = original.length;
+                processedLength.textContent = processed.length;
+                
+                // Count line breaks removed
+                const lineBreaksCount = (original.match(/(\r\n|\n|\r)/gm) || []).length;
+                lineBreaksRemoved.textContent = lineBreaksCount;
+            }
+
+            // Clear all text
+            function clearText() {
+                inputText.value = '';
+                outputText.value = '';
+                originalLength.textContent = '0';
+                processedLength.textContent = '0';
+                lineBreaksRemoved.textContent = '0';
+            }
+
+            // Copy processed text to clipboard
+            function copyToClipboard() {
+                if (!outputText.value) return;
+                
+                outputText.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            }
+
+            // Event listeners
+            processBtn.addEventListener('click', processText);
+            clearBtn.addEventListener('click', clearText);
+            copyBtn.addEventListener('click', copyToClipboard);
+
+            // Process text on input (real-time)
+            inputText.addEventListener('input', processText);
+        });
+    </script>
+</body>
+</html>

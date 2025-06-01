@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Robots.txt generator tool. Create perfect robots.txt files for SEO with our easy-to-use generator.">
+    <meta name="keywords" content="robots.txt generator, SEO tool, search engine optimization, website crawler, robots.txt creator">
+    <meta name="author" content="Your Name">
+    <title>Robots.txt Generator | Create Perfect robots.txt Files</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .result-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> Robots.txt Generator</h1>
+            <p>Create the perfect robots.txt file to control search engine crawlers and improve your website's SEO</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-cogs"></i> Generator Settings</h2>
+                
+                <div class="form-group">
+                    <label for="sitemap-url">Sitemap URL (optional)</label>
+                    <input type="text" id="sitemap-url" placeholder="https://example.com/sitemap.xml">
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-agent">User-agent</label>
+                    <select id="user-agent">
+                        <option value="*">All user-agents (*)</option>
+                        <option value="Googlebot">Googlebot</option>
+                        <option value="Googlebot-Image">Googlebot-Image</option>
+                        <option value="Googlebot-News">Googlebot-News</option>
+                        <option value="Googlebot-Video">Googlebot-Video</option>
+                        <option value="Bingbot">Bingbot</option>
+                        <option value="Slurp">Yahoo! Slurp</option>
+                        <option value="DuckDuckBot">DuckDuckBot</option>
+                        <option value="Baiduspider">Baiduspider</option>
+                        <option value="Yandex">Yandex</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Access Rules</label>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="access" value="allow" checked> Allow all
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="access" value="disallow"> Disallow all
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 5px;">
+                            <input type="radio" name="access" value="custom"> Custom rules
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group" id="custom-rules-container" style="display: none;">
+                    <label for="custom-rules">Custom Rules (one per line)</label>
+                    <textarea id="custom-rules" placeholder="Disallow: /private/
+Disallow: /tmp/
+Allow: /public/"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="crawl-delay">Crawl-delay (seconds, optional)</label>
+                    <input type="text" id="crawl-delay" placeholder="e.g., 10">
+                </div>
+                
+                <div class="btn-group">
+                    <button id="generate-btn" class="btn"><i class="fas fa-magic"></i> Generate</button>
+                    <button id="copy-btn" class="btn btn-accent"><i class="far fa-copy"></i> Copy</button>
+                    <button id="download-btn" class="btn btn-secondary"><i class="fas fa-download"></i> Download</button>
+                    <button id="reset-btn" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-file-alt"></i> Your Robots.txt File</h2>
+                <textarea id="robots-output" readonly placeholder="Your generated robots.txt file will appear here..."></textarea>
+            </div>
+            
+            <div class="result-stats">
+                <div class="stat-card">
+                    <h3>Rules Generated</h3>
+                    <p id="rules-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>File Size</h3>
+                    <p id="file-size">0 KB</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Lines</h3>
+                    <p id="lines-count">0</p>
+                </div>
+            </div>
+            
+            <h2 style="margin-bottom: 20px; color: var(--primary);">Why Use Our Robots.txt Generator?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Our tool generates your robots.txt file instantly in your browser with no server delays or waiting time.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure & Private</h3>
+                    <p>All processing happens locally in your browser. We don't store or see any of your data or generated files.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on all devices - smartphones, tablets, and desktops with a responsive interface.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>SEO Optimized</h3>
+                    <p>Creates standards-compliant robots.txt files that follow all best practices for search engine optimization.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Clean Code</h3>
+                    <p>Generates properly formatted, commented code that's easy to understand and modify if needed.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Easy Export</h3>
+                    <p>One-click copy or download your robots.txt file to immediately upload to your website.</p>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-Robots.txt Generator Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Show/hide custom rules textarea
+            const accessRadios = document.querySelectorAll('input[name="access"]');
+            const customRulesContainer = document.getElementById('custom-rules-container');
+            
+            accessRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    customRulesContainer.style.display = this.value === 'custom' ? 'block' : 'none';
+                });
+            });
+            
+            // Generate robots.txt file
+            document.getElementById('generate-btn').addEventListener('click', generateRobotsTxt);
+            document.getElementById('copy-btn').addEventListener('click', copyRobotsTxt);
+            document.getElementById('download-btn').addEventListener('click', downloadRobotsTxt);
+            document.getElementById('reset-btn').addEventListener('click', resetForm);
+            
+            function generateRobotsTxt() {
+                const sitemapUrl = document.getElementById('sitemap-url').value.trim();
+                const userAgent = document.getElementById('user-agent').value;
+                const access = document.querySelector('input[name="access"]:checked').value;
+                const crawlDelay = document.getElementById('crawl-delay').value.trim();
+                const customRules = document.getElementById('custom-rules').value;
+                
+                let robotsTxt = '';
+                
+                // Add user-agent line
+                robotsTxt += `User-agent: ${userAgent}\n`;
+                
+                // Add access rules
+                if (access === 'allow') {
+                    robotsTxt += 'Disallow:\n';
+                } else if (access === 'disallow') {
+                    robotsTxt += 'Disallow: /\n';
+                } else if (access === 'custom' && customRules) {
+                    robotsTxt += customRules;
+                    if (!customRules.endsWith('\n')) robotsTxt += '\n';
+                }
+                
+                // Add crawl delay if specified
+                if (crawlDelay && !isNaN(crawlDelay)) {
+                    robotsTxt += `Crawl-delay: ${crawlDelay}\n`;
+                }
+                
+                // Add sitemap if specified
+                if (sitemapUrl) {
+                    if (sitemapUrl.startsWith('http')) {
+                        robotsTxt += `Sitemap: ${sitemapUrl}\n`;
+                    } else {
+                        robotsTxt += `Sitemap: https://${sitemapUrl}\n`;
+                    }
+                }
+                
+                // Update output
+                const output = document.getElementById('robots-output');
+                output.value = robotsTxt;
+                
+                // Update stats
+                updateStats(robotsTxt);
+            }
+            
+            function updateStats(robotsTxt) {
+                // Count rules
+                const ruleCount = robotsTxt.split('\n').filter(line => 
+                    line.startsWith('Disallow:') || line.startsWith('Allow:') || line.startsWith('Crawl-delay:')
+                ).length;
+                
+                // Count lines
+                const lineCount = robotsTxt.split('\n').filter(line => line.trim() !== '').length;
+                
+                // Calculate file size
+                const fileSize = new Blob([robotsTxt]).size;
+                const fileSizeKB = (fileSize / 1024).toFixed(2);
+                
+                // Update UI
+                document.getElementById('rules-count').textContent = ruleCount;
+                document.getElementById('lines-count').textContent = lineCount;
+                document.getElementById('file-size').textContent = `${fileSizeKB} KB`;
+            }
+            
+            function copyRobotsTxt() {
+                const output = document.getElementById('robots-output');
+                if (output.value.trim() === '') {
+                    alert('Please generate a robots.txt file first.');
+                    return;
+                }
+                
+                output.select();
+                document.execCommand('copy');
+                
+                // Visual feedback
+                const copyBtn = document.getElementById('copy-btn');
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            }
+            
+            function downloadRobotsTxt() {
+                const output = document.getElementById('robots-output');
+                if (output.value.trim() === '') {
+                    alert('Please generate a robots.txt file first.');
+                    return;
+                }
+                
+                const blob = new Blob([output.value], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'robots.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            
+            function resetForm() {
+                document.getElementById('sitemap-url').value = '';
+                document.getElementById('user-agent').value = '*';
+                document.querySelector('input[name="access"][value="allow"]').checked = true;
+                document.getElementById('custom-rules').value = '';
+                document.getElementById('custom-rules-container').style.display = 'none';
+                document.getElementById('crawl-delay').value = '';
+                document.getElementById('robots-output').value = '';
+                
+                // Reset stats
+                document.getElementById('rules-count').textContent = '0';
+                document.getElementById('lines-count').textContent = '0';
+                document.getElementById('file-size').textContent = '0 KB';
+            }
+        });
+    </script>
+</body>
+</html>

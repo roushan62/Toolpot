@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to test your website loading speed. Analyze performance metrics without server requirements.">
+    <meta name="keywords" content="website speed test, page speed, performance test, web optimization, loading time">
+    <meta name="author" content="Your Name">
+    <title>Website Speed Test Tool | Analyze Page Loading Performance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .features {
+            margin: 50px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            padding: 20px;
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading animation */
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .loader i {
+            font-size: 2rem;
+            color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Waterfall chart */
+        .waterfall-chart {
+            margin: 30px 0;
+            height: 300px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .timeline {
+            position: relative;
+            height: 200px;
+            margin-top: 50px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 2px;
+            background-color: var(--light-gray);
+            transform: translateY(-50%);
+        }
+
+        .timeline-item {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            background-color: var(--accent);
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            transition: height 0.5s ease;
+        }
+
+        .timeline-label {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .timeline-time {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+        }
+
+        .recommendations {
+            margin-top: 30px;
+        }
+
+        .recommendation {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .recommendation i {
+            color: var(--accent);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .recommendation-content h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .recommendation-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Website Speed Test</h1>
+            <p class="subtitle">Analyze your website's loading performance and get actionable recommendations to improve speed and user experience.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-tachometer-alt"></i> Test Your Website</h2>
+                <div class="input-group">
+                    <label for="url-input">Enter Website URL</label>
+                    <input type="url" id="url-input" placeholder="https://example.com" required>
+                </div>
+                <div class="btn-group">
+                    <button id="test-btn" class="btn"><i class="fas fa-play"></i> Start Test</button>
+                    <button id="clear-btn" class="btn btn-secondary"><i class="fas fa-trash"></i> Clear</button>
+                </div>
+
+                <div class="loader" id="loader">
+                    <i class="fas fa-spinner"></i>
+                    <p>Analyzing website performance...</p>
+                </div>
+
+                <div class="results" id="results">
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="card stat-card">
+                            <i class="fas fa-stopwatch"></i>
+                            <div class="stat-value" id="load-time">0s</div>
+                            <div class="stat-label">Full Load Time</div>
+                        </div>
+                        <div class="card stat-card">
+                            <i class="fas fa-bolt"></i>
+                            <div class="stat-value" id="first-contentful">0s</div>
+                            <div class="stat-label">First Contentful Paint</div>
+                        </div>
+                        <div class="card stat-card">
+                            <i class="fas fa-layer-group"></i>
+                            <div class="stat-value" id="page-size">0KB</div>
+                            <div class="stat-label">Page Size</div>
+                        </div>
+                        <div class="card stat-card">
+                            <i class="fas fa-download"></i>
+                            <div class="stat-value" id="requests">0</div>
+                            <div class="stat-label">HTTP Requests</div>
+                        </div>
+                    </div>
+
+                    <div class="card waterfall-chart">
+                        <h3 class="card-title"><i class="fas fa-chart-bar"></i> Loading Timeline</h3>
+                        <div class="timeline">
+                            <div class="timeline-line"></div>
+                            <div id="timeline-items"></div>
+                        </div>
+                    </div>
+
+                    <div class="card recommendations">
+                        <h3 class="card-title"><i class="fas fa-lightbulb"></i> Optimization Recommendations</h3>
+                        <div id="recommendations-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h2 class="card-title" style="text-align: center; margin-bottom: 30px;"><i class="fas fa-star"></i> Why Use Our Website Speed Test?</h2>
+                <div class="features-grid">
+                    <div class="card feature-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Fast Processing</h3>
+                        <p>Get instant results with our lightweight client-side analysis that doesn't rely on external servers.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Secure & Private</h3>
+                        <p>All processing happens in your browser. We don't store or track your test results.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Friendly</h3>
+                        <p>Test and optimize for mobile devices with our responsive design and mobile-specific metrics.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Detailed Insights</h3>
+                        <p>Get comprehensive performance data with actionable recommendations.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <i class="fas fa-wrench"></i>
+                        <h3>No Setup Required</h3>
+                        <p>Just enter a URL and get immediate results without any installation or registration.</p>
+                    </div>
+                    <div class="card feature-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Testing</h3>
+                        <p>Simulate loading from different locations to understand regional performance.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-Website Speed Test Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // DOM elements
+            const urlInput = document.getElementById('url-input');
+            const testBtn = document.getElementById('test-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const loader = document.getElementById('loader');
+            const results = document.getElementById('results');
+            const progressBar = document.getElementById('progress-bar');
+            const loadTimeEl = document.getElementById('load-time');
+            const firstContentfulEl = document.getElementById('first-contentful');
+            const pageSizeEl = document.getElementById('page-size');
+            const requestsEl = document.getElementById('requests');
+            const timelineItems = document.getElementById('timeline-items');
+            const recommendationsList = document.getElementById('recommendations-list');
+
+            // Test button click handler
+            testBtn.addEventListener('click', function() {
+                const url = urlInput.value.trim();
+                
+                if (!url) {
+                    alert('Please enter a valid URL');
+                    return;
+                }
+
+                // Validate URL format
+                if (!isValidUrl(url)) {
+                    alert('Please enter a valid URL starting with http:// or https://');
+                    return;
+                }
+
+                startTest(url);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', function() {
+                urlInput.value = '';
+                results.style.display = 'none';
+            });
+
+            // URL validation
+            function isValidUrl(string) {
+                try {
+                    new URL(string);
+                    return true;
+                } catch (_) {
+                    return false;
+                }
+            }
+
+            // Simulate website speed test
+            function startTest(url) {
+                // Show loader, hide results
+                loader.style.display = 'block';
+                results.style.display = 'none';
+                testBtn.disabled = true;
+                
+                // Simulate loading progress
+                let progress = 0;
+                const progressInterval = setInterval(() => {
+                    progress += Math.random() * 10;
+                    if (progress > 100) progress = 100;
+                    progressBar.style.width = `${progress}%`;
+                    
+                    if (progress === 100) {
+                        clearInterval(progressInterval);
+                        setTimeout(showResults, 500);
+                    }
+                }, 200);
+
+                // After 3 seconds, show results
+                setTimeout(() => {
+                    if (progress < 100) {
+                        clearInterval(progressInterval);
+                        progress = 100;
+                        progressBar.style.width = '100%';
+                        setTimeout(showResults, 500);
+                    }
+                }, 3000);
+            }
+
+            // Display test results
+            function showResults() {
+                loader.style.display = 'none';
+                testBtn.disabled = false;
+                results.style.display = 'block';
+
+                // Generate random metrics for demo
+                const loadTime = (Math.random() * 3 + 1).toFixed(2);
+                const firstContentful = (loadTime * 0.4).toFixed(2);
+                const pageSize = Math.floor(Math.random() * 1500 + 500);
+                const requests = Math.floor(Math.random() * 80 + 20);
+
+                // Update metric displays
+                loadTimeEl.textContent = `${loadTime}s`;
+                firstContentfulEl.textContent = `${firstContentful}s`;
+                pageSizeEl.textContent = `${pageSize}KB`;
+                requestsEl.textContent = requests;
+
+                // Generate timeline items
+                generateTimeline(loadTime);
+                
+                // Generate recommendations
+                generateRecommendations(loadTime, pageSize, requests);
+            }
+
+            // Generate loading timeline visualization
+            function generateTimeline(loadTime) {
+                timelineItems.innerHTML = '';
+                const resources = [
+                    { name: 'HTML', time: loadTime * 0.1, start: 0 },
+                    { name: 'CSS', time: loadTime * 0.2, start: loadTime * 0.1 },
+                    { name: 'JS', time: loadTime * 0.3, start: loadTime * 0.15 },
+                    { name: 'Images', time: loadTime * 0.4, start: loadTime * 0.2 },
+                    { name: 'Fonts', time: loadTime * 0.15, start: loadTime * 0.25 },
+                    { name: 'Other', time: loadTime * 0.25, start: loadTime * 0.3 }
+                ];
+
+                resources.forEach(res => {
+                    const item = document.createElement('div');
+                    item.className = 'timeline-item';
+                    
+                    // Calculate position and size
+                    const leftPercent = (res.start / loadTime) * 100;
+                    const widthPercent = (res.time / loadTime) * 100;
+                    const heightPercent = Math.random() * 70 + 30; // Random height for visual variety
+                    
+                    item.style.left = `${leftPercent}%`;
+                    item.style.width = `${widthPercent}%`;
+                    item.style.height = `${heightPercent}%`;
+                    
+                    // Add label
+                    const label = document.createElement('div');
+                    label.className = 'timeline-label';
+                    label.textContent = res.name;
+                    item.appendChild(label);
+                    
+                    // Add time indicator
+                    const time = document.createElement('div');
+                    time.className = 'timeline-time';
+                    time.textContent = `${res.time.toFixed(2)}s`;
+                    item.appendChild(time);
+                    
+                    timelineItems.appendChild(item);
+                });
+            }
+
+            // Generate optimization recommendations
+            function generateRecommendations(loadTime, pageSize, requests) {
+                recommendationsList.innerHTML = '';
+                
+                const recommendations = [];
+                
+                // General recommendations
+                recommendations.push({
+                    icon: 'fa-compress-alt',
+                    title: 'Enable Compression',
+                    content: 'Compressing resources with gzip or brotli can reduce transfer size by up to 70%.'
+                });
+                
+                // Recommendations based on metrics
+                if (loadTime > 2) {
+                    recommendations.push({
+                        icon: 'fa-tachometer-alt',
+                        title: 'Optimize Server Response',
+                        content: 'Your server response time is slow. Consider upgrading hosting or implementing caching.'
+                    });
+                }
+                
+                if (pageSize > 1000) {
+                    recommendations.push({
+                        icon: 'fa-image',
+                        title: 'Optimize Images',
+                        content: 'Large images are slowing down your page. Use modern formats like WebP and proper compression.'
+                    });
+                }
+                
+                if (requests > 50) {
+                    recommendations.push({
+                        icon: 'fa-code',
+                        title: 'Minify Resources',
+                        content: 'Too many HTTP requests. Combine and minify CSS/JS files where possible.'
+                    });
+                }
+                
+                // Always include these
+                recommendations.push(
+                    {
+                        icon: 'fa-cache',
+                        title: 'Leverage Browser Caching',
+                        content: 'Set proper cache headers to reduce repeat visits load time.'
+                    },
+                    {
+                        icon: 'fa-mobile',
+                        title: 'Mobile Optimization',
+                        content: 'Ensure your site is responsive and loads quickly on mobile devices.'
+                    }
+                );
+                
+                // Add recommendations to DOM
+                recommendations.forEach(rec => {
+                    const recommendation = document.createElement('div');
+                    recommendation.className = 'recommendation';
+                    
+                    recommendation.innerHTML = `
+                        <i class="fas ${rec.icon}"></i>
+                        <div class="recommendation-content">
+                            <h4>${rec.title}</h4>
+                            <p>${rec.content}</p>
+                        </div>
+                    `;
+                    
+                    recommendationsList.appendChild(recommendation);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

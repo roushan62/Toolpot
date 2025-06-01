@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to remove extra spaces from text. Clean up your documents, essays, or code by removing unnecessary spaces quickly and easily.">
+    <meta name="keywords" content="remove spaces, space remover, text cleaner, formatting tool, online editor">
+    <meta name="author" content="Your Name">
+    <title>Space Remover Tool | Clean Extra Spaces from Text</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.25);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-space-shuttle"></i> Space Remover Tool</h1>
+            <p>Clean up your text by removing unnecessary extra spaces with our free online tool. Perfect for documents, essays, and code formatting.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-edit"></i> Text Input</h2>
+                <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+                
+                <div class="button-group">
+                    <button id="removeSpacesBtn" class="btn"><i class="fas fa-magic"></i> Remove Extra Spaces</button>
+                    <button id="clearBtn" class="btn btn-secondary"><i class="fas fa-trash-alt"></i> Clear</button>
+                    <button id="copyBtn" class="btn btn-accent"><i class="fas fa-copy"></i> Copy Text</button>
+                </div>
+                
+                <h2 class="card-title"><i class="fas fa-clipboard-check"></i> Cleaned Text</h2>
+                <textarea id="outputText" placeholder="Your cleaned text will appear here..." readonly></textarea>
+            </div>
+
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <h3 id="originalLength">0</h3>
+                    <p>Original Characters</p>
+                </div>
+                <div class="card stat-card">
+                    <h3 id="cleanedLength">0</h3>
+                    <p>Cleaned Characters</p>
+                </div>
+                <div class="card stat-card">
+                    <h3 id="spaceCount">0</h3>
+                    <p>Spaces Removed</p>
+                </div>
+                <div class="card stat-card">
+                    <h3 id="lineCount">0</h3>
+                    <p>Lines Processed</p>
+                </div>
+            </div>
+
+            <h2 class="card-title" style="margin-bottom: 20px;"><i class="fas fa-star"></i> Why Use Our Space Remover Tool?</h2>
+            <div class="features-grid">
+                <div class="card feature-card">
+                    <h3 class="card-title"><i class="fas fa-bolt"></i> Fast Processing</h3>
+                    <p>Our tool works instantly in your browser, cleaning your text in milliseconds no matter how long your document is.</p>
+                </div>
+                <div class="card feature-card">
+                    <h3 class="card-title"><i class="fas fa-lock"></i> Secure & Private</h3>
+                    <p>All processing happens locally in your browser. Your text never leaves your computer, ensuring complete privacy.</p>
+                </div>
+                <div class="card feature-card">
+                    <h3 class="card-title"><i class="fas fa-mobile-alt"></i> Mobile Friendly</h3>
+                    <p>Works perfectly on all devices - smartphones, tablets, and desktop computers with a responsive interface.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-Space Remover Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set copyright year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Get DOM elements
+            const inputText = document.getElementById('inputText');
+            const outputText = document.getElementById('outputText');
+            const removeSpacesBtn = document.getElementById('removeSpacesBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const originalLengthEl = document.getElementById('originalLength');
+            const cleanedLengthEl = document.getElementById('cleanedLength');
+            const spaceCountEl = document.getElementById('spaceCount');
+            const lineCountEl = document.getElementById('lineCount');
+
+            // Update stats function
+            function updateStats() {
+                const text = inputText.value;
+                const cleanedText = outputText.value;
+                
+                originalLengthEl.textContent = text.length;
+                cleanedLengthEl.textContent = cleanedText.length;
+                spaceCountEl.textContent = text.length - cleanedText.length;
+                lineCountEl.textContent = text.split('\n').length;
+            }
+
+            // Remove extra spaces function
+            function removeExtraSpaces() {
+                let text = inputText.value;
+                
+                // Remove leading/trailing spaces
+                text = text.trim();
+                
+                // Replace multiple spaces with single space
+                text = text.replace(/\s+/g, ' ');
+                
+                // Clean spaces around newlines
+                text = text.replace(/\s*\n\s*/g, '\n');
+                
+                outputText.value = text;
+                updateStats();
+            }
+
+            // Clear function
+            function clearText() {
+                inputText.value = '';
+                outputText.value = '';
+                updateStats();
+            }
+
+            // Copy function
+            function copyToClipboard() {
+                outputText.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            }
+
+            // Event listeners
+            inputText.addEventListener('input', function() {
+                if (outputText.value) {
+                    removeExtraSpaces();
+                }
+                updateStats();
+            });
+
+            removeSpacesBtn.addEventListener('click', removeExtraSpaces);
+            clearBtn.addEventListener('click', clearText);
+            copyBtn.addEventListener('click', copyToClipboard);
+
+            // Initialize stats
+            updateStats();
+        });
+    </script>
+</body>
+</html>

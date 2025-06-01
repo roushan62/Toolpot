@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online backlink checker tool to analyze your website's backlinks. No registration required, works entirely in your browser.">
+    <meta name="keywords" content="backlink checker, SEO tool, backlink analysis, website backlinks, free SEO tool">
+    <meta name="author" content="Your Name">
+    <title>Backlink Checker | Free SEO Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .results {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .backlinks-list {
+            margin-top: 20px;
+        }
+
+        .backlink-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .backlink-item:last-child {
+            border-bottom: none;
+        }
+
+        .backlink-url {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .backlink-info {
+            display: flex;
+            gap: 15px;
+        }
+
+        .backlink-info span {
+            background-color: var(--light);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        .features {
+            margin: 50px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            padding: 25px;
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .backlink-info {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-link"></i> Backlink Checker</h1>
+            <p>Analyze your website's backlinks for free. No registration required - all processing happens in your browser.</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-search"></i> Check Backlinks</h2>
+                <div class="input-group">
+                    <label for="website-url">Website URL</label>
+                    <input type="url" id="website-url" placeholder="https://example.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="analysis-depth">Analysis Depth</label>
+                    <select id="analysis-depth">
+                        <option value="10">10 Backlinks</option>
+                        <option value="25" selected>25 Backlinks</option>
+                        <option value="50">50 Backlinks</option>
+                        <option value="100">100 Backlinks</option>
+                    </select>
+                </div>
+                <div class="btn-group">
+                    <button id="check-btn" class="btn"><i class="fas fa-play"></i> Check Backlinks</button>
+                    <button id="clear-btn" class="btn btn-secondary"><i class="fas fa-trash"></i> Clear</button>
+                </div>
+            </div>
+
+            <div id="results" class="results">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-chart-bar"></i> Backlink Statistics</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card card">
+                            <div class="stat-value" id="total-backlinks">0</div>
+                            <div class="stat-label">Total Backlinks</div>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="stat-value" id="unique-domains">0</div>
+                            <div class="stat-label">Unique Domains</div>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="stat-value" id="dofollow">0</div>
+                            <div class="stat-label">DoFollow Links</div>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="stat-value" id="nofollow">0</div>
+                            <div class="stat-label">NoFollow Links</div>
+                        </div>
+                    </div>
+
+                    <h3 class="card-title"><i class="fas fa-list"></i> Backlinks List</h3>
+                    <div id="backlinks-list" class="backlinks-list">
+                        <!-- Backlinks will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <h2 class="card-title" style="text-align: center; margin-bottom: 30px;"><i class="fas fa-star"></i> Why Use Our Backlink Checker?</h2>
+                <div class="features-grid">
+                    <div class="feature-card card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Fast Processing</h3>
+                        <p>Our tool quickly analyzes your backlinks without any server delays. Get results in seconds.</p>
+                    </div>
+                    <div class="feature-card card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Secure & Private</h3>
+                        <p>All processing happens locally in your browser. We don't store or share your data.</p>
+                    </div>
+                    <div class="feature-card card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Friendly</h3>
+                        <p>Works perfectly on all devices - smartphones, tablets, and desktop computers.</p>
+                    </div>
+                    <div class="feature-card card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>SEO Insights</h3>
+                        <p>Gain valuable insights to improve your website's search engine rankings.</p>
+                    </div>
+                    <div class="feature-card card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h3>Completely Free</h3>
+                        <p>No hidden costs or premium features. All functionality is available at no charge.</p>
+                    </div>
+                    <div class="feature-card card">
+                        <i class="fas fa-user-shield"></i>
+                        <h3>No Registration</h3>
+                        <p>Use the tool immediately without creating an account or providing personal information.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-Backlink Checker Tool. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Sample backlink data (in a real app, this would come from an API)
+            const sampleBacklinks = [
+                { url: 'https://exampleblog.com/seo-tips', type: 'dofollow', domain: 'exampleblog.com', anchor: 'SEO resources' },
+                { url: 'https://technews.com/2023/review', type: 'nofollow', domain: 'technews.com', anchor: 'read more' },
+                { url: 'https://businessdirectory.com/listings', type: 'dofollow', domain: 'businessdirectory.com', anchor: 'our website' },
+                { url: 'https://forum.discussion.com/thread', type: 'nofollow', domain: 'forum.discussion.com', anchor: 'useful link' },
+                { url: 'https://partner.site/collaboration', type: 'dofollow', domain: 'partner.site', anchor: 'collaboration partner' },
+                { url: 'https://news.site/industry-updates', type: 'dofollow', domain: 'news.site', anchor: 'industry leader' },
+                { url: 'https://blog.example.org/guest-post', type: 'nofollow', domain: 'blog.example.org', anchor: 'guest author' },
+                { url: 'https://resources.edu/learning', type: 'dofollow', domain: 'resources.edu', anchor: 'educational resource' },
+                { url: 'https://directory.biz/listing123', type: 'dofollow', domain: 'directory.biz', anchor: 'professional service' },
+                { url: 'https://social.network/share', type: 'nofollow', domain: 'social.network', anchor: 'shared link' }
+            ];
+
+            // DOM elements
+            const checkBtn = document.getElementById('check-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const websiteUrl = document.getElementById('website-url');
+            const analysisDepth = document.getElementById('analysis-depth');
+            const resultsSection = document.getElementById('results');
+            const backlinksList = document.getElementById('backlinks-list');
+            const totalBacklinks = document.getElementById('total-backlinks');
+            const uniqueDomains = document.getElementById('unique-domains');
+            const dofollow = document.getElementById('dofollow');
+            const nofollow = document.getElementById('nofollow');
+
+            // Check backlinks button click handler
+            checkBtn.addEventListener('click', function() {
+                if (!websiteUrl.value) {
+                    alert('Please enter a website URL');
+                    return;
+                }
+
+                // Show loading state
+                checkBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+                checkBtn.disabled = true;
+
+                // Simulate API call with timeout
+                setTimeout(function() {
+                    analyzeBacklinks(websiteUrl.value, parseInt(analysisDepth.value));
+                    
+                    // Reset button
+                    checkBtn.innerHTML = '<i class="fas fa-play"></i> Check Backlinks';
+                    checkBtn.disabled = false;
+                }, 1500);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', function() {
+                websiteUrl.value = '';
+                analysisDepth.value = '25';
+                resultsSection.style.display = 'none';
+            });
+
+            // Function to analyze backlinks (simulated)
+            function analyzeBacklinks(url, depth) {
+                // Validate URL
+                try {
+                    new URL(url);
+                } catch (e) {
+                    alert('Please enter a valid URL (e.g., https://example.com)');
+                    return;
+                }
+
+                // Process sample data (in a real app, this would process real backlinks)
+                const processedBacklinks = processBacklinks(sampleBacklinks, depth);
+                
+                // Display results
+                displayResults(processedBacklinks);
+                
+                // Show results section
+                resultsSection.style.display = 'block';
+            }
+
+            // Process sample backlinks data
+            function processBacklinks(backlinks, depth) {
+                // Limit to requested depth
+                const limitedBacklinks = backlinks.slice(0, depth);
+                
+                // Calculate stats
+                const domains = new Set(limitedBacklinks.map(link => link.domain));
+                const dofollowCount = limitedBacklinks.filter(link => link.type === 'dofollow').length;
+                const nofollowCount = limitedBacklinks.filter(link => link.type === 'nofollow').length;
+                
+                return {
+                    backlinks: limitedBacklinks,
+                    total: limitedBacklinks.length,
+                    uniqueDomains: domains.size,
+                    dofollow: dofollowCount,
+                    nofollow: nofollowCount
+                };
+            }
+
+            // Display results
+            function displayResults(data) {
+                // Update stats
+                totalBacklinks.textContent = data.total;
+                uniqueDomains.textContent = data.uniqueDomains;
+                dofollow.textContent = data.dofollow;
+                nofollow.textContent = data.nofollow;
+                
+                // Clear previous backlinks
+                backlinksList.innerHTML = '';
+                
+                // Add new backlinks
+                data.backlinks.forEach(backlink => {
+                    const backlinkItem = document.createElement('div');
+                    backlinkItem.className = 'backlink-item';
+                    
+                    backlinkItem.innerHTML = `
+                        <div class="backlink-url">
+                            <a href="${backlink.url}" target="_blank" rel="noopener noreferrer">${backlink.url}</a>
+                        </div>
+                        <div class="backlink-info">
+                            <span><i class="fas fa-${backlink.type === 'dofollow' ? 'check' : 'ban'}"></i> ${backlink.type}</span>
+                            <span><i class="fas fa-globe"></i> ${backlink.domain}</span>
+                            <span><i class="fas fa-anchor"></i> "${backlink.anchor}"</span>
+                        </div>
+                    `;
+                    
+                    backlinksList.appendChild(backlinkItem);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

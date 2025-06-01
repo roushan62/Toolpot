@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to analyze keyword density in your text content for SEO optimization">
+    <meta name="keywords" content="keyword density checker, SEO tool, content analysis, keyword analysis">
+    <meta name="author" content="Your Name">
+    <title>Keyword Density Checker | SEO Analysis Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.25);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            background-color: var(--primary);
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .result-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .result-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .keyword-list {
+            margin-top: 20px;
+        }
+
+        .keyword-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .keyword-item:last-child {
+            border-bottom: none;
+        }
+
+        .keyword {
+            font-weight: 500;
+        }
+
+        .keyword-count {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-key"></i> Keyword Density Checker</h1>
+            <p>Analyze your content's keyword distribution for better SEO optimization</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-edit"></i> Enter Your Content</h2>
+                <div class="input-group">
+                    <textarea id="contentInput" placeholder="Paste your article, blog post, or any text content here..."></textarea>
+                </div>
+                <div class="btn-group">
+                    <button id="analyzeBtn" class="btn"><i class="fas fa-chart-bar"></i> Analyze Keywords</button>
+                    <button id="clearBtn" class="btn btn-secondary"><i class="fas fa-trash"></i> Clear Text</button>
+                    <button id="copyBtn" class="btn btn-accent"><i class="fas fa-copy"></i> Copy Text</button>
+                </div>
+            </div>
+
+            <div id="resultsSection" style="display: none;">
+                <h2 class="card-title"><i class="fas fa-chart-pie"></i> Analysis Results</h2>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <h3 class="result-title">Total Words</h3>
+                        <div class="result-value" id="totalWords">0</div>
+                    </div>
+                    <div class="result-card">
+                        <h3 class="result-title">Unique Keywords</h3>
+                        <div class="result-value" id="uniqueKeywords">0</div>
+                    </div>
+                    <div class="result-card">
+                        <h3 class="result-title">Keyword Density</h3>
+                        <div class="result-value" id="keywordDensity">0%</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-list-ol"></i> Top Keywords</h3>
+                    <div class="keyword-list" id="topKeywordsList">
+                        <!-- Keywords will be inserted here by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title"><i class="fas fa-table"></i> Full Keyword Distribution</h3>
+                    <div class="keyword-list" id="fullKeywordsList">
+                        <!-- All keywords will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="card-title"><i class="fas fa-star"></i> Why Use Our Keyword Density Checker?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 class="feature-title">Fast Processing</h3>
+                    <p class="feature-desc">Get instant keyword analysis without waiting. Our tool processes your content in real-time as you type.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-lock"></i></div>
+                    <h3 class="feature-title">Secure & Private</h3>
+                    <p class="feature-desc">Your content never leaves your browser. All processing happens locally for complete privacy.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 class="feature-title">Mobile Friendly</h3>
+                    <p class="feature-desc">Works perfectly on all devices - smartphones, tablets, and desktops with responsive design.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="feature-title">SEO Optimized</h3>
+                    <p class="feature-desc">Identify optimal keyword density to improve your content's search engine rankings.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="currentYear"></span> ToolPot-Keyword Density Checker. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Get DOM elements
+            const contentInput = document.getElementById('contentInput');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const totalWordsEl = document.getElementById('totalWords');
+            const uniqueKeywordsEl = document.getElementById('uniqueKeywords');
+            const keywordDensityEl = document.getElementById('keywordDensity');
+            const topKeywordsList = document.getElementById('topKeywordsList');
+            const fullKeywordsList = document.getElementById('fullKeywordsList');
+
+            // Event listeners
+            analyzeBtn.addEventListener('click', analyzeKeywords);
+            clearBtn.addEventListener('click', clearText);
+            copyBtn.addEventListener('click', copyText);
+
+            // Analyze keywords function
+            function analyzeKeywords() {
+                const content = contentInput.value.trim();
+                
+                if (!content) {
+                    alert('Please enter some text to analyze.');
+                    return;
+                }
+
+                // Process the text
+                const words = content.toLowerCase().match(/\b[\w']+\b/g) || [];
+                const totalWords = words.length;
+                
+                if (totalWords === 0) {
+                    alert('No valid words found to analyze.');
+                    return;
+                }
+
+                // Count word occurrences
+                const wordCounts = {};
+                words.forEach(word => {
+                    if (word.length > 2) { // Ignore very short words
+                        wordCounts[word] = (wordCounts[word] || 0) + 1;
+                    }
+                });
+
+                // Convert to array and sort by count
+                const sortedKeywords = Object.entries(wordCounts)
+                    .sort((a, b) => b[1] - a[1]);
+
+                const uniqueKeywords = sortedKeywords.length;
+                const keywordDensity = ((uniqueKeywords / totalWords) * 100).toFixed(2);
+
+                // Update UI with results
+                totalWordsEl.textContent = totalWords.toLocaleString();
+                uniqueKeywordsEl.textContent = uniqueKeywords.toLocaleString();
+                keywordDensityEl.textContent = keywordDensity + '%';
+
+                // Display top 10 keywords
+                topKeywordsList.innerHTML = '';
+                const topKeywords = sortedKeywords.slice(0, 10);
+                topKeywords.forEach(([word, count]) => {
+                    const percentage = ((count / totalWords) * 100).toFixed(2);
+                    const item = document.createElement('div');
+                    item.className = 'keyword-item';
+                    item.innerHTML = `
+                        <span class="keyword">${word}</span>
+                        <span>
+                            <span class="keyword-count">${count}</span>
+                            <span> (${percentage}%)</span>
+                        </span>
+                    `;
+                    topKeywordsList.appendChild(item);
+                });
+
+                // Display full keyword list (limited to 50 for performance)
+                fullKeywordsList.innerHTML = '';
+                const displayKeywords = sortedKeywords.slice(0, 50);
+                displayKeywords.forEach(([word, count]) => {
+                    const percentage = ((count / totalWords) * 100).toFixed(2);
+                    const item = document.createElement('div');
+                    item.className = 'keyword-item';
+                    item.innerHTML = `
+                        <span class="keyword">${word}</span>
+                        <span>
+                            <span class="keyword-count">${count}</span>
+                            <span> (${percentage}%)</span>
+                        </span>
+                    `;
+                    fullKeywordsList.appendChild(item);
+                });
+
+                // Show results section
+                resultsSection.style.display = 'block';
+            }
+
+            // Clear text function
+            function clearText() {
+                contentInput.value = '';
+                resultsSection.style.display = 'none';
+            }
+
+            // Copy text function
+            function copyText() {
+                contentInput.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

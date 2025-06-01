@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to compare and find differences between two text documents. Fast, secure, and works in your browser.">
+    <meta name="keywords" content="text diff, text compare, difference checker, text comparison tool, online diff tool">
+    <meta name="author" content="Your Name">
+    <title>Text Diff Checker | Compare and Find Differences Between Texts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--accent);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            resize: vertical;
+            transition: var(--transition);
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.25);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #3a7bc8;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .diff-container {
+            margin-top: 20px;
+        }
+
+        .diff-result {
+            padding: 15px;
+            background-color: var(--light);
+            border-radius: var(--border-radius);
+            white-space: pre-wrap;
+            font-family: monospace;
+            line-height: 1.5;
+        }
+
+        .diff-added {
+            background-color: rgba(40, 167, 69, 0.2);
+            text-decoration: none;
+        }
+
+        .diff-removed {
+            background-color: rgba(220, 53, 69, 0.2);
+            text-decoration: line-through;
+        }
+
+        .stats-card {
+            text-align: center;
+        }
+
+        .stats-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stats-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-file-alt"></i> Text Diff Checker</h1>
+            <p>Compare two texts and find differences instantly. Works entirely in your browser - no data is sent to servers.</p>
+        </header>
+
+        <main>
+            <div class="grid">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-file-import"></i> Original Text</h2>
+                    <textarea id="text1" placeholder="Paste your original text here..."></textarea>
+                    <div class="btn-group">
+                        <button class="btn btn-outline" id="clear1"><i class="fas fa-trash"></i> Clear</button>
+                        <button class="btn btn-outline" id="sample1"><i class="fas fa-lightbulb"></i> Load Sample</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-file-edit"></i> Modified Text</h2>
+                    <textarea id="text2" placeholder="Paste your modified text here..."></textarea>
+                    <div class="btn-group">
+                        <button class="btn btn-outline" id="clear2"><i class="fas fa-trash"></i> Clear</button>
+                        <button class="btn btn-outline" id="sample2"><i class="fas fa-lightbulb"></i> Load Sample</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-cogs"></i> Options</h2>
+                <div class="btn-group">
+                    <button class="btn" id="compareBtn"><i class="fas fa-search"></i> Compare Texts</button>
+                    <button class="btn btn-outline" id="clearAll"><i class="fas fa-broom"></i> Clear All</button>
+                    <button class="btn btn-accent" id="copyDiff"><i class="fas fa-copy"></i> Copy Differences</button>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card stats-card">
+                    <h2 class="card-title"><i class="fas fa-ruler"></i> Text Length</h2>
+                    <div class="stats-value" id="length1">0</div>
+                    <div class="stats-label">Original Text</div>
+                </div>
+                <div class="card stats-card">
+                    <h2 class="card-title"><i class="fas fa-ruler"></i> Text Length</h2>
+                    <div class="stats-value" id="length2">0</div>
+                    <div class="stats-label">Modified Text</div>
+                </div>
+                <div class="card stats-card">
+                    <h2 class="card-title"><i class="fas fa-exchange-alt"></i> Differences</h2>
+                    <div class="stats-value" id="diffCount">0</div>
+                    <div class="stats-label">Total Changes</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-search-minus"></i> Differences Found</h2>
+                <div class="diff-container">
+                    <div id="diffResult" class="diff-result">The differences will appear here after comparison...</div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-outline" id="downloadDiff"><i class="fas fa-download"></i> Download Results</button>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-bolt"></i> Fast Processing</h2>
+                    <p>Our text diff checker processes your documents instantly in your browser without any server delays. No waiting time for results.</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-lock"></i> Secure & Private</h2>
+                    <p>All processing happens locally in your browser. Your text is never sent to any server, ensuring complete privacy and security.</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-mobile-alt"></i> Mobile Friendly</h2>
+                    <p>Works perfectly on all devices - smartphones, tablets, and desktops. Compare documents anytime, anywhere.</p>
+                </div>
+                <div class="card">
+                    <h2 class="card-title"><i class="fas fa-code"></i> No Installation</h2>
+                    <p>Use our tool directly in your browser without any installation or registration. Just open and start comparing texts immediately.</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; <span id="year"></span> ToolPot-Text Diff Checker. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Sample texts
+            const sampleText1 = `The quick brown fox jumps over the lazy dog.
+This is the original text that we'll compare against.
+Notice how some lines are exactly the same,
+while others have minor differences.
+
+Version: 1.0
+Date: 2023-05-15`;
+
+            const sampleText2 = `The quick brown fox leaps over the lazy dog.
+This is the modified text that we'll compare.
+Notice how some lines are exactly the same,
+while others have major differences.
+
+Version: 1.1
+Date: 2023-06-20`;
+
+            // DOM elements
+            const text1El = document.getElementById('text1');
+            const text2El = document.getElementById('text2');
+            const clear1Btn = document.getElementById('clear1');
+            const clear2Btn = document.getElementById('clear2');
+            const sample1Btn = document.getElementById('sample1');
+            const sample2Btn = document.getElementById('sample2');
+            const clearAllBtn = document.getElementById('clearAll');
+            const compareBtn = document.getElementById('compareBtn');
+            const copyDiffBtn = document.getElementById('copyDiff');
+            const downloadDiffBtn = document.getElementById('downloadDiff');
+            const diffResultEl = document.getElementById('diffResult');
+            const length1El = document.getElementById('length1');
+            const length2El = document.getElementById('length2');
+            const diffCountEl = document.getElementById('diffCount');
+
+            // Event listeners
+            text1El.addEventListener('input', updateTextStats);
+            text2El.addEventListener('input', updateTextStats);
+            clear1Btn.addEventListener('click', () => { text1El.value = ''; updateTextStats(); });
+            clear2Btn.addEventListener('click', () => { text2El.value = ''; updateTextStats(); });
+            sample1Btn.addEventListener('click', () => { text1El.value = sampleText1; updateTextStats(); });
+            sample2Btn.addEventListener('click', () => { text2El.value = sampleText2; updateTextStats(); });
+            clearAllBtn.addEventListener('click', clearAll);
+            compareBtn.addEventListener('click', compareTexts);
+            copyDiffBtn.addEventListener('click', copyDiffResult);
+            downloadDiffBtn.addEventListener('click', downloadDiffResult);
+
+            // Update text length stats
+            function updateTextStats() {
+                length1El.textContent = text1El.value.length;
+                length2El.textContent = text2El.value.length;
+            }
+
+            // Clear all inputs and results
+            function clearAll() {
+                text1El.value = '';
+                text2El.value = '';
+                diffResultEl.innerHTML = 'The differences will appear here after comparison...';
+                diffCountEl.textContent = '0';
+                updateTextStats();
+            }
+
+            // Compare texts and show differences
+            function compareTexts() {
+                const text1 = text1El.value;
+                const text2 = text2El.value;
+                
+                if (!text1 && !text2) {
+                    diffResultEl.innerHTML = '<span style="color: var(--gray)">Please enter texts to compare in both boxes.</span>';
+                    return;
+                }
+                
+                const diff = diffStrings(text1, text2);
+                diffResultEl.innerHTML = diff.html;
+                diffCountEl.textContent = diff.count;
+            }
+
+            // Diff algorithm for strings
+            function diffStrings(text1, text2) {
+                const lines1 = text1.split('\n');
+                const lines2 = text2.split('\n');
+                
+                let html = '';
+                let count = 0;
+                
+                // Create a matrix for the LCS algorithm
+                const matrix = Array(lines1.length + 1).fill().map(() => Array(lines2.length + 1).fill(0));
+                
+                // Fill the matrix
+                for (let i = 1; i <= lines1.length; i++) {
+                    for (let j = 1; j <= lines2.length; j++) {
+                        if (lines1[i - 1] === lines2[j - 1]) {
+                            matrix[i][j] = matrix[i - 1][j - 1] + 1;
+                        } else {
+                            matrix[i][j] = Math.max(matrix[i - 1][j], matrix[i][j - 1]);
+                        }
+                    }
+                }
+                
+                // Backtrack to find differences
+                let i = lines1.length;
+                let j = lines2.length;
+                const result = [];
+                
+                while (i > 0 || j > 0) {
+                    if (i > 0 && j > 0 && lines1[i - 1] === lines2[j - 1]) {
+                        result.unshift({ type: 'equal', value: lines1[i - 1] });
+                        i--;
+                        j--;
+                    } else if (j > 0 && (i === 0 || matrix[i][j - 1] >= matrix[i - 1][j])) {
+                        result.unshift({ type: 'added', value: lines2[j - 1] });
+                        count++;
+                        j--;
+                    } else if (i > 0 && (j === 0 || matrix[i][j - 1] < matrix[i - 1][j])) {
+                        result.unshift({ type: 'removed', value: lines1[i - 1] });
+                        count++;
+                        i--;
+                    }
+                }
+                
+                // Generate HTML with styling
+                result.forEach(item => {
+                    if (item.type === 'equal') {
+                        html += escapeHtml(item.value) + '\n';
+                    } else if (item.type === 'added') {
+                        html += `<span class="diff-added">+ ${escapeHtml(item.value)}</span>\n`;
+                    } else if (item.type === 'removed') {
+                        html += `<span class="diff-removed">- ${escapeHtml(item.value)}</span>\n`;
+                    }
+                });
+                
+                return { html, count };
+            }
+
+            // Helper function to escape HTML
+            function escapeHtml(unsafe) {
+                return unsafe
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#039;");
+            }
+
+            // Copy diff result to clipboard
+            function copyDiffResult() {
+                const range = document.createRange();
+                range.selectNode(diffResultEl);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+                document.execCommand('copy');
+                window.getSelection().removeAllRanges();
+                
+                // Show feedback
+                const originalText = copyDiffBtn.innerHTML;
+                copyDiffBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyDiffBtn.innerHTML = originalText;
+                }, 2000);
+            }
+
+            // Download diff result as text file
+            function downloadDiffResult() {
+                const content = diffResultEl.textContent;
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'text-diff-result.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            // Initialize stats
+            updateTextStats();
+        });
+    </script>
+</body>
+</html>

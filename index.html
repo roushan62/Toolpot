@@ -1,952 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online tools for PDF, text, images, developers, and SEO. Boost your productivity with our easy-to-use web tools.">
-    <meta name="keywords" content="online tools, PDF tools, text tools, image tools, developer tools, SEO tools">
-    <title>ToolPot - Free Online Tools for Everyone</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <style>
-        :root {
-            --primary-color: #4f46e5;
-            --primary-hover: #4338ca;
-            --secondary-color: #6b7280;
-            --dark-color: #1f2937;
-            --light-color: #f9fafb;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body.dark-mode {
-            background-color: #111827;
-            color: #e5e7eb;
-            --light-color: #1f2937;
-            --dark-color: #f9fafb;
-            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
-            --card-hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        body.dark-mode header {
-            background-color: #1f2937;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark-color);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        body.dark-mode .nav-links a {
-            color: #e5e7eb;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark-color);
-        }
-
-        body.dark-mode .mobile-menu-btn {
-            color: #e5e7eb;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-            border-radius: 0 0 20px 20px;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .search-bar {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-bar input {
-            width: 100%;
-            padding: 1rem;
-            border-radius: 50px;
-            border: none;
-            font-size: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar button {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 0.7rem 1.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .search-bar button:hover {
-            background-color: var(--primary-hover);
-        }
-
-        /* Tools Section */
-        .tools-section {
-            padding: 2rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            color: var(--dark-color);
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .category-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        body.dark-mode .category-card {
-            background-color: #1f2937;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--card-hover-shadow);
-        }
-
-        .category-header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .tools-list {
-            list-style: none;
-            padding: 1rem;
-        }
-
-        .tools-list li {
-            margin-bottom: 0.5rem;
-        }
-
-        .tools-list a {
-            display: block;
-            padding: 0.7rem;
-            border-radius: 5px;
-            color: var(--dark-color);
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        body.dark-mode .tools-list a {
-            color: #e5e7eb;
-        }
-
-        .tools-list a:hover {
-            background-color: rgba(79, 70, 229, 0.1);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 3rem 0;
-            background-color: #f3f4f6;
-        }
-
-        body.dark-mode .features {
-            background-color: #111827;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            text-align: center;
-        }
-
-        body.dark-mode .feature-card {
-            background-color: #1f2937;
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-
-        body.dark-mode footer {
-            background-color: #111827;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9ca3af;
-        }
-
-        /* Dark Mode Toggle */
-        .theme-toggle {
-            display: flex;
-            align-items: center;
-            margin-left: 1.5rem;
-            cursor: pointer;
-        }
-
-        .toggle-icon {
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 99;
-            padding: 1rem;
-            transform: translateY(-150%);
-            transition: transform 0.3s ease;
-        }
-
-        body.dark-mode .mobile-menu {
-            background-color: #1f2937;
-        }
-
-        .mobile-menu.active {
-            transform: translateY(0);
-        }
-
-        .mobile-menu .nav-links {
-            flex-direction: column;
-        }
-
-        .mobile-menu .nav-links li {
-            margin: 0.5rem 0;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 1rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero {
-                padding: 2rem 0;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ToolPot - Free online tools for PDF, images, text, developers, SEO, calculators, converters, generators and more. Smooth modern design.">
+<meta name="keywords" content="online tools, PDF, image, text, developer, SEO, calculator, converter, QR, BMI, generator">
+<title>ToolPot - Smooth All-in-One Online Tools</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+:root{--p:#6366f1;--p2:#8b5cf6;--p3:#ec4899;--dark:#0f172a;--card:#ffffff;--text:#1e293b;--sub:#64748b;--bg:#f8fafc}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
+body{background:linear-gradient(180deg,#f8fafc 0%,#e2e8f0 100%);color:var(--text);line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.05);padding:18px 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:1.6rem;background:linear-gradient(90deg,var(--p),var(--p2),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{color:var(--sub);text-decoration:none;font-weight:500;font-size:.95rem;transition:color .2s} nav a:hover{color:var(--p)}
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:120px 0 80px;background:linear-gradient(135deg,#6366f1 0%,#8b5cf6 40%,#ec4899 100%);color:#fff;border-radius:0 0 48px 48px;margin-bottom:60px;box-shadow:0 25px 60px rgba(99,102,241,.35)}
+.hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,.08)" d="M0,160L60,144C120,128,240,96,360,106.7C480,117,600,171,720,186.7C840,203,960,181,1080,160C1200,139,1320,117,1380,106.7L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"/></svg>') no-repeat bottom;background-size:cover;opacity:.6}
+.hero h1{position:relative;z-index:1;font-size:3.2rem;font-weight:800;margin-bottom:16px;letter-spacing:-2px;line-height:1.1}
+.hero p{position:relative;z-index:1;font-size:1.15rem;opacity:.92;max-width:640px}
+/* Sections */
+.section{padding:80px 0}
+.section h2{font-size:2rem;font-weight:800;margin-bottom:8px;background:linear-gradient(90deg,var(--p),var(--p3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{color:var(--sub);margin-bottom:40px;font-size:1.05rem}
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px}
+.card{background:var(--card);border-radius:20px;padding:28px;box-shadow:0 10px 40px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s;border:1px solid rgba(0,0,0,.03)}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.card-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 6px 20px rgba(0,0,0,.08)}
+.card h3{font-size:1.15rem;font-weight:700}
+.card ul{list-style:none}
+.card ul li{margin-bottom:6px}
+.card ul li a{display:block;padding:10px 12px;border-radius:10px;color:var(--text);text-decoration:none;font-size:.92rem;transition:background .2s,color .2s} .card ul li a:hover{background:rgba(99,102,241,.08);color:var(--p)}
+/* Footer */
+footer{background:var(--dark);color:#fff;padding:60px 0 20px;border-radius:48px 48px 0 0;margin-top:80px}
+footer .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+footer h4{font-weight:700;margin-bottom:16px;font-size:1.1rem}
+footer ul{list-style:none}
+footer a{color:#94a3b8;text-decoration:none;font-size:.9rem;display:block;margin-bottom:8px;transition:color .2s} footer a:hover{color:#fff}
+.footer-bottom{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);color:#64748b;font-size:.85rem}
+/* Responsive */
+@media(max-width:768px){.hero h1{font-size:2rem}.nav-links{gap:16px;font-size:.85rem}nav ul{gap:14px}}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyLDIgQzEwLjg5LDIgMTAsMi45IDEwLDQgQzEwLDUuMSAxMC45LDYgMTIsNiBDMTMuMSw2IDE0LDUuMSAxNCw0IEMxNCwyLjkgMTMuMSwyIDEyLDIgTTE1LjUsOCBDMTQuMTIsOCAxMyw5LjEyIDEzLDEwLjUgQzEzLDExLjg4IDE0LjEyLDEzIDE1LjUsMTMgQzE2Ljg4LDEzIDE4LDExLjg4IDE4LDEwLjUgQzE4LDkuMTIgMTYuODgsOCAxNS41LDggTTguNSw4IEM3LjEyLDggNiw5LjEyIDYsMTAuNSBDNiwxMS44OCA3LjEyLDEzIDguNSwxMyBDOS44OCwxMyAxMSwxMS44OCAxMSwxMC41IEMxMSw5LjEyIDkuODgsOCA4LjUsOCBNMTIsMTQgQzkuNjYsMTQgNCwxNS4xNyA0LDE3LjUgQzQsMTkuODggOS4zMywyMSAxMiwyMSBDMTQuNjcsMjEgMjAsMTkuODggMjAsMTcuNSBDMjAsMTUuMTcgMTQuMzQsMTQgMTIsMTQiIGZpbGw9IiM0ZjQ2ZTUiLz48L3N2Zz4=" alt="ToolKit Logo">
-                ToolPot
-            </a>
-            <nav class="desktop-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="About-Us.html">About Us</a></li>
-                    <li><a href="Contact-Support.html">Contact Us</a></li>
-                    <li><a href="Privacy-Policy.html">Privacy Policy</a></li>
-                    <li><a href="Terms-&-Conditions.html">Terms & Conditions</a></li>
-                    <li><a href="Disclaimer.html">Disclaimer</a></li>
-                </ul>
-            </nav>
-            <div class="theme-toggle" id="themeToggle">
-                <span class="toggle-icon">🌓</span>
-                <span>Dark Mode</span>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
-        </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="About-Us.html">About Us</a></li>
-                <li><a href="Contact-Us.html">Contact Us</a></li>
-                <li><a href="Privacy-Policy.html">Privacy Policy</a></li>
-                <li><a href="Terms-&-Conditions.html">Terms & Conditions</a></li>
-                <li><a href="Disclaimer.html">Disclaimer</a></li>
-            </ul>
-        </div>
-    </header>
+<header>
+<div class="container header-inner">
+<a href="index.html" class="logo">ToolPot</a>
+<nav><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="About-Us.html">About</a></li><li><a href="Contact-Support.html">Contact</a></li><li><a href="Privacy-Policy.html">Privacy</a></li></ul></nav>
+</div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Your All-in-One Online ToolPot</h1>
-            <p>Free, fast, and easy-to-use tools for PDFs, text, images, development, and SEO. No installation required.</p>
-            <div class="search-bar">
-                <input type="text" placeholder="Search for tools...">
-                <button>Search</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools Section -->
-<section class="tools-section">
-    <div class="container">
-        <h2 class="section-title">Browse Tools by Category</h2>
-        <p class="section-subtitle">Discover our collection of powerful online tools to simplify your work</p>
-        
-        <div class="categories-grid">
-            <!-- PDF Tools -->
-            <div class="category-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.3 10.7 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z"/></svg>
-                    </div>
-                    <h3>PDF Tools</h3>
-                </div>
-                <ul class="tools-list">
-                    
-                    <li><a href="Merge-PDF.html" class="tool-link"><span class="tool-icon">→</span> Merge PDF Files</a></li>
-                    <li><a href="Split-PDF.html" class="tool-link"><span class="tool-icon">→</span> Split PDF</a></li>
-                    <li><a href="Compress-PDF.html" class="tool-link"><span class="tool-icon">→</span> Compress PDF</a></li>
-                    <li><a href="PDF-to-JPG Converter" class="tool-link"><span class="tool-icon">→</span> PDF to JPG Converter</a></li>
-                </ul>
-                <div class="category-footer">
-                    <a href="#" class="view-all">View all PDF tools</a>
-                </div>
-            </div>
-
-            <!-- Text Tools -->
-            <div class="category-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M432 416h-23.41L277.88 53.69A32 32 0 0 0 247.58 32h-47.16a32 32 0 0 0-30.3 21.69L39.41 416H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-19.58l23.3-64h152.56l23.3 64H304a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM176.85 272L224 142.51 271.15 272z"/></svg>
-                    </div>
-                    <h3>Text Tools</h3>
-                </div>
-                <ul class="tools-list">
-                    <li><a href="Word-Counter-Tool.html" class="tool-link"><span class="tool-icon">→</span> Word Counter</a></li>
-                    <li><a href="Text-Case-Converter.html" class="tool-link"><span class="tool-icon">→</span> Text Case Converter</a></li>
-                    <li><a href="Remove-Line-Breaks.html" class="tool-link"><span class="tool-icon">→</span> Remove Line Breaks</a></li>
-                    <li><a href="Space-Remover-Tool.html" class="tool-link"><span class="tool-icon">→</span> Remove Extra Spaces</a></li>
-                    <li><a href="Text-Diff-Checker.html" class="tool-link"><span class="tool-icon">→</span> Text Diff Checker</a></li>
-                    <li><a href="Random-Password-Generator.html" class="tool-link"><span class="tool-icon">→</span> Random Password Generator</a></li>
-                </ul>
-                <div class="category-footer">
-                    <a href="#" class="view-all">View all text tools</a>
-                </div>
-            </div>
-
-            <!-- Image Tools -->
-            <div class="category-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M464 448H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48v288c0 26.51-21.49 48-48 48zM112 120c-30.928 0-56 25.072-56 56s25.072 56 56 56 56-25.072 56-56-25.072-56-56-56zM64 384h384V272l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L208 320l-55.515-55.515c-4.686-4.686-12.284-4.686-16.971 0L64 336v48z"/></svg>
-                    </div>
-                    <h3>Image Tools</h3>
-                </div>
-                <ul class="tools-list">
-                    <li><a href="Image-Compressor.html" class="tool-link"><span class="tool-icon">→</span> Image Compressor</a></li>
-                    <li><a href="Image-Resizer.html" class="tool-link"><span class="tool-icon">→</span> Image Resizer</a></li>
-                    <li><a href="Image-Format-Converter.html" class="tool-link"><span class="tool-icon">→</span> Image Format Converter</a></li>
-                    <li><a href="Image-to-Text-OCR.html" class="tool-link"><span class="tool-icon">→</span> Image to Text (OCR)</a></li>
-                    <li><a href="Color-Picker.html" class="tool-link"><span class="tool-icon">→</span> Color Picker Tool</a></li>
-                </ul>
-                <div class="category-footer">
-                    <a href="#" class="view-all">View all image tools</a>
-                </div>
-            </div>
-
-            <!-- Developer Tools -->
-            <div class="category-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></svg>
-                    </div>
-                    <h3>Developer Tools</h3>
-                </div>
-                <ul class="tools-list">
-                    <li><a href="JSON-Formatter.html" class="tool-link"><span class="tool-icon">→</span> JSON Formatter</a></li>
-                    <li><a href="HTML-EscapeUnescape.html" class="tool-link"><span class="tool-icon">→</span> HTML Escape/Unescape</a></li>
-                    <li><a href="Base64-EncodeDecode.html" class="tool-link"><span class="tool-icon">→</span> Base64 Encode/Decode</a></li>
-                    <li><a href="URL-EncodeDecode.html" class="tool-link"><span class="tool-icon">→</span> URL Encode/Decode</a></li>
-                    <li><a href="SQL-Formatter.html" class="tool-link"><span class="tool-icon">→</span> SQL Formatter</a></li>
-                    <li><a href="Regex-Tester.html" class="tool-link"><span class="tool-icon">→</span> Regex Tester</a></li>
-                </ul>
-                <div class="category-footer">
-                    <a href="#" class="view-all">View all developer tools</a>
-                </div>
-            </div>
-
-            <!-- SEO Tools -->
-            <div class="category-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="category-header">
-                    <div class="category-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"/></svg>
-                    </div>
-                    <h3>SEO Tools</h3>
-                </div>
-                <ul class="tools-list">
-                    <li><a href="Meta-Tag-Generator.html" class="tool-link"><span class="tool-icon">→</span> Meta Tag Generator</a></li>
-                    <li><a href="Robots-txt-Generator.html" class="tool-link"><span class="tool-icon">→</span> Robots.txt Generator</a></li>
-                    <li><a href="Sitemap-Generator.html" class="tool-link"><span class="tool-icon">→</span> Sitemap Generator</a></li>
-                    <li><a href="Keyword-Density-Checker.html" class="tool-link"><span class="tool-icon">→</span> Keyword Density Checker</a></li>
-                    <li><a href="Backlink-Checker.html" class="tool-link"><span class="tool-icon">→</span> Backlink Checker</a></li>
-                    <li><a href="Website-Speed-Test.html" class="tool-link"><span class="tool-icon">→</span> Website Speed Test</a></li>
-                </ul>
-                <div class="category-footer">
-                    <a href="#" class="view-all">View all SEO tools</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="hero">
+<div class="container" style="position:relative;z-index:1">
+<h1>Your All-in-One Online ToolPot</h1>
+<p>Free, fast, and smooth web tools for PDFs, images, text, code, calculators, generators, and more. No sign-up needed.</p>
+</div>
 </section>
 
-<style>
-.tools-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f9fbfd 0%, #f0f4f8 100%);
-}
+<section class="section container">
+<h2>All Tools</h2>
+<p class="subtitle">Browse by category — everything linked and ready.</p>
+<div class="grid">
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+<div class="card">
+<div class="card-header"><div class="icon" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">📄</div><h3>PDF Tools</h3></div>
+<ul>
+<li><a href="Merge-PDF.html">Merge PDF</a></li>
+<li><a href="Split-PDF.html">Split PDF</a></li>
+<li><a href="Compress-PDF.html">Compress PDF</a></li>
+<li><a href="PDF-to-JPG Converter.html">PDF to JPG</a></li>
+</ul>
+</div>
 
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    color: #2c3e50;
-    position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
-}
+<div class="card">
+<div class="card-header"><div class="icon" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">✏️</div><h3>Text Tools</h3></div>
+<ul>
+<li><a href="Word-Counter-Tool.html">Word Counter</a></li>
+<li><a href="Text-Case-Converter.html">Case Converter</a></li>
+<li><a href="Remove-Line-Breaks.html">Remove Line Breaks</a></li>
+<li><a href="Space-Remover-Tool.html">Space Remover</a></li>
+<li><a href="Text-Diff-Checker.html">Text Diff</a></li>
+<li><a href="Random-Password-Generator.html">Password Generator</a></li>
+<li><a href="Lorem-Ipsum-Generator.html">Lorem Ipsum Generator</a></li>
+</ul>
+</div>
 
-.section-title:after {
-    content: '';
-    position: absolute;
-    width: 70px;
-    height: 4px;
-    background: #4a90e2;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 2px;
-}
+<div class="card">
+<div class="card-header"><div class="icon" style="background:linear-gradient(135deg,#10b981,#34d399)">🖼️</div><h3>Image Tools</h3></div>
+<ul>
+<li><a href="Image-Compressor.html">Image Compressor</a></li>
+<li><a href="Image-Resizer.html">Image Resizer</a></li>
+<li><a href="Image-Format-Converter.html">Format Converter</a></li>
+<li><a href="Image-to-Text-OCR.html">Image to Text (OCR)</a></li>
+<li><a href="Color-Picker.html">Color Picker</a></li>
+<li><a href="Color-Palette-Generator.html">Palette Generator</a></li>
+</ul>
+</div>
 
-.section-subtitle {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #7f8c8d;
-    margin-bottom: 50px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
+<div class="card">
+<div class="card-header"><div class="icon" style="background:linear-gradient(135deg,#f59e0b,#f97316)">💻</div><h3>Developer Tools</h3></div>
+<ul>
+<li><a href="JSON-Formatter.html">JSON Formatter</a></li>
+<li><a href="HTML-EscapeUnescape.html">HTML Escape/Unescape</a></li>
+<li><a href="Base64-EncodeDecode.html">Base64 Encode/Decode</a></li>
+<li><a href="URL-EncodeDecode.html">URL Encode/Decode</a></li>
+<li><a href="SQL-Formatter.html">SQL Formatter</a></li>
+<li><a href="Regex-Tester.html">Regex Tester</a></li>
+</ul>
+</div>
 
-.categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
+<div class="card">
+<div class="card-header"><div class="icon" style="background:linear-gradient(135deg,#a855f7,#ec4899)">🔍</div><h3>SEO Tools</h3></div>
+<ul>
+<li><a href="Meta-Tag-Generator.html">Meta Tag Generator</a></li>
+<li><a href="Robots-txt-Generator.html">Robots.txt Generator</a></li>
+<li><a href="Sitemap-Generator.html">Sitemap Generator</a></li>
+<li><a href="Keyword-Density-Checker.html">Keyword Density</a></li>
+<li><a href="Backlink-Checker.html">Backlink Checker</a></li>
+<li><a href="Website-Speed-Test.html">Website Speed Test</a></li>
+</ul>
+</div>
 
-.category-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
+<div class="card">
+<div class="card-header"><div class="icon" style="background:linear-gradient(135deg,#10b981,#6366f1)">🧮</div><h3>Calculators & Converters</h3></div>
+<ul>
+<li><a href="BMI-Calculator.html">BMI Calculator</a></li>
+<li><a href="Unit-Converter.html">Unit Converter</a></li>
+<li><a href="QR-Code-Generator.html">QR Code Generator</a></li>
+</ul>
+</div>
 
-.category-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
+</div>
+</section>
 
-.category-card:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: linear-gradient(90deg, #4a90e2, #8e44ad);
-    z-index: -1;
-}
-
-.category-header {
-    padding: 25px 25px 15px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-}
-
-.category-icon {
-    width: 40px;
-    height: 40px;
-    background: #f0f4f8;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-}
-
-.category-icon svg {
-    width: 20px;
-    height: 20px;
-    fill: #4a90e2;
-}
-
-.category-header h3 {
-    margin: 0;
-    font-size: 1.3rem;
-    color: #2c3e50;
-}
-
-.tools-list {
-    padding: 15px 0;
-    margin: 0;
-    list-style: none;
-}
-
-.tools-list li {
-    padding: 0 25px;
-    margin: 5px 0;
-}
-
-.tool-link {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    color: #34495e;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-radius: 5px;
-}
-
-.tool-link:hover {
-    color: #4a90e2;
-    background: #f8fafc;
-    padding-left: 10px;
-}
-
-.tool-icon {
-    margin-right: 10px;
-    font-weight: bold;
-    color: #4a90e2;
-    opacity: 0;
-    transition: all 0.2s ease;
-}
-
-.tool-link:hover .tool-icon {
-    opacity: 1;
-    margin-right: 15px;
-}
-
-.category-footer {
-    padding: 15px 25px;
-    border-top: 1px solid #eee;
-    text-align: right;
-}
-
-.view-all {
-    color: #7f8c8d;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-}
-
-.view-all:hover {
-    color: #4a90e2;
-}
-
-.view-all:after {
-    content: '→';
-    margin-left: 5px;
-    transition: all 0.2s ease;
-}
-
-.view-all:hover:after {
-    margin-left: 8px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .categories-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-}
-
-/* Animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.category-card {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.category-card:nth-child(1) { animation-delay: 0.1s; }
-.category-card:nth-child(2) { animation-delay: 0.2s; }
-.category-card:nth-child(3) { animation-delay: 0.3s; }
-.category-card:nth-child(4) { animation-delay: 0.4s; }
-.category-card:nth-child(5) { animation-delay: 0.5s; }
-</style>
-
-<!-- Add this before closing body tag if using AOS library -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true
-    });
-</script>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Why Choose Our Tools?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Fast Processing</h3>
-                    <p>Our tools work directly in your browser, ensuring lightning-fast processing without server delays.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy Focused</h3>
-                    <p>Your files never leave your computer. We process everything locally for maximum privacy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💯</div>
-                    <h3>100% Free</h3>
-                    <p>All our tools are completely free to use with no hidden charges or premium tiers.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobile Friendly</h3>
-                    <p>Works perfectly on all devices - desktop, tablet, and mobile phones.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>ToolPot</h3>
-                    <p>Your all-in-one solution for online tools. Free, fast, and easy-to-use tools for everyone.</p>
-                    <div class="social-links">
-                        <a href="https://twitter.com" aria-label="Twitter"><span>🐦</span></a>
-                        <a href="https://linkedin.com" aria-label="LinkedIn"><span>🔗</span></a>
-                        <a href="https://github.com" aria-label="GitHub"><span>🐱</span></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="About-Us.html">About Us</a></li>
-                        <li><a href="Contact-Support.html">Contact Us</a></li>
-                        <li><a href="Privacy-Policy.html">Privacy Policy</a></li>
-                        <li><a href="Terms-&-Conditions.html">Terms & Conditions</a></li>
-                        <li><a href="Disclaimer.html">Disclaimer</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Popular Tools</h3>
-                    <ul class="footer-links">
-                        <li><a href="pdf-to-word.html">PDF to Word</a></li>
-                        <li><a href="image-compressor.html">Image Compressor</a></li>
-                        <li><a href="word-counter.html">Word Counter</a></li>
-                        <li><a href="JSON-Formatter.html">JSON Formatter</a></li>
-                        <li><a href="meta-tag-generator.html">Meta Tag Generator</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="Contact-Support.html">Contact Support</a></li>
-                        <li><a href="FAQ.html">FAQs</a></li>
-                        <li><a href="Send-Feedback.html">Send Feedback</a></li>
-                        <li><a href="Suggest-New-Tool.html">Suggest a Tool</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> ToolPot. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // Dark mode toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-
-        // Check for saved theme preference or use preferred color scheme
-        const savedTheme = localStorage.getItem('theme') || 
-                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.querySelector('span:last-child').textContent = 'Light Mode';
-        }
-
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDarkMode = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            themeToggle.querySelector('span:last-child').textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
-        });
-
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Simulate search functionality
-        const searchInput = document.querySelector('.search-bar input');
-        const searchButton = document.querySelector('.search-bar button');
-
-        searchButton.addEventListener('click', () => {
-            alert(`Search functionality will be implemented later. You searched for: "${searchInput.value}"`);
-        });
-
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                alert(`Search functionality will be implemented later. You searched for: "${searchInput.value}"`);
-            }
-        });
-    </script>
+<footer>
+<div class="container grid">
+<div>
+<h4>ToolPot</h4>
+<p>Free, fast, smooth online tools. No downloads. Works in your browser.</p>
+</div>
+<div>
+<h4>Categories</h4>
+<ul>
+<li><a href="#">PDF Tools</a></li>
+<li><a href="#">Text Tools</a></li>
+<li><a href="#">Image Tools</a></li>
+<li><a href="#">Developer Tools</a></li>
+<li><a href="#">SEO & Calculators</a></li>
+</ul>
+</div>
+<div>
+<h4>Support</h4>
+<ul>
+<li><a href="Contact-Support.html">Contact</a></li>
+<li><a href="FAQ.html">FAQ</a></li>
+<li><a href="Send-Feedback.html">Feedback</a></li>
+<li><a href="Suggest-New-Tool.html">Suggest Tool</a></li>
+</ul>
+</div>
+</div>
+<div class="container footer-bottom">© 2026 ToolPot. All rights reserved.</div>
+</footer>
 </body>
 </html>

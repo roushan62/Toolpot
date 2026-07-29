@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Generator - ToolPot</title>
+<style>
+:root{--p:#8b5cf6;--bg:#f8fafc;--card:#fff;--text:#1f2937}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:linear-gradient(135deg,#f8fafc,#e0e7ff);min-height:100vh;color:var(--text);padding:40px 20px}
+.container{max-width:900px;margin:0 auto;background:var(--card);border-radius:20px;padding:40px;box-shadow:0 25px 50px rgba(139,92,246,0.12)}
+h1{font-size:2rem;margin-bottom:8px;background:linear-gradient(90deg,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+.subtitle{color:#6b7280;margin-bottom:30px}
+.colors{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:30px}
+.swatch{width:120px;height:120px;border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.3);cursor:pointer;transition:transform .2s} .swatch:hover{transform:scale(1.08)}
+.btn{background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff;border:none;padding:14px 28px;border-radius:50px;font-size:1rem;cursor:pointer;box-shadow:0 8px 25px rgba(139,92,246,.35);transition:transform .15s,box-shadow .15s} .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(139,92,246,.45)}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Color Palette Generator</h1>
+<p class="subtitle">Generate beautiful palettes instantly. Click a swatch to copy.</p>
+<div class="colors" id="palette"></div>
+<button class="btn" onclick="generate()">Generate New Palette</button>
+</div>
+<script>
+function generate(){
+const pal=document.getElementById('palette'); pal.innerHTML='';
+for(let i=0;i<5;i++){const c='#'+Math.floor(Math.random()*16777215).toString(16).padStart(6,'0');
+const d=document.createElement('div'); d.className='swatch'; d.style.background=c; d.innerHTML=c; d.onclick=()=>navigator.clipboard.writeText(c); pal.appendChild(d);}
+}
+generate();
+</script>
+</body>
+</html>
